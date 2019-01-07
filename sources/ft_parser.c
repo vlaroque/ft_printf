@@ -6,21 +6,40 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 18:51:01 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/07 18:53:14 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/07 20:07:32 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		flagparser(char *str, int *i, t_arguments *args)
+int		ft_mini_atoi(const char *str, int *i)
+{
+	long long int	result;
+
+	result = 0;
+	if (!(str[*i] >= '0' && str[*i] <= '9'))
+		return (-1);
+	while (str[*i] >= '0' && str[*i] <= '9')
+	{
+		result = result * 10 + (str[*i] - '0');
+		if (result > 2147483647)
+			return (-42);
+		i++;
+	}
+	return ((int)(result));
+}
+
+int		ft_flagparser(char *str, int *i, t_arguments *args)
 {
 	char	ok;
 
 	ok = 1;
 	args->flags = 0x00000000;
-	while (ok && str[*i])
+	while (ok)
 	{
-		if(str[*i] == '-')
+		if (str[*i] == '\0')
+			return (0);
+		else if(str[*i] == '-')
 			args->flags = (args->flags | 0x01);
 		else if(str[*i] == '+')
 			args->flags = (args->flags | 0x02);
@@ -34,7 +53,7 @@ int		flagparser(char *str, int *i, t_arguments *args)
 			ok = 0;
 		(*i)++;
 	}
-	return (0);
+	return (1);
 }
 
 /* -1 est une absence, -42 est une erreur */
@@ -51,9 +70,18 @@ int		ft_parser(char *str, int *i, t_arguments *args)
 		(*i)++;
 		return(1);
 	} 
-	flagparser(str, i, args);
-	args->width = ft_mini_atoi(str, i);
-
-	printf("args : %d", (int)(args->flags));
+	if(!ft_flagparser(str, i, args))
+		return(-1);
+	//args->width = ft_mini_atoi(str, i);
+	if(str[*i] == '.')
+	{
+		(*i)++;
+		//args->precision = ft_mini_atoi(str, i);
+		printf("loltest\n");
+	}
+	printf("\n\nargs : %d | width : %d | preci : %d\n\n", (int)(args->flags), args->width, args->precision);
+	*i = 0;
+	char tab[]= "123456789"; 
+	printf("\n%d\n", ft_mini_atoi(tab, i));
 	return (printchars);
 }

@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 11:04:12 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/07 18:16:46 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/07 18:56:40 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	ft_putchar(char c);
 void	ft_putstr(char *str);
 int		ft_atoi(const char *str);
 int		ft_mini_atoi(const char *str, int *i);
+int		ft_parser(char *str, int *i, t_arguments *args);
 
 #endif

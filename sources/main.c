@@ -19,7 +19,7 @@ int		main(void)
 	long long i = 321654987;
 	char	str[10] = "lolilol\na\0";
 	
-	ft_printf("%%lol %#s\n", str);
+	ft_printf("%%lol %#15.63s\n", str);
 	printf("\nle vrai : %.5lld", i);
 
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 04:10:05 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/07 18:17:52 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/07 19:36:28 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,3 @@ int		ft_atoi(const char *str)
 	return ((int)(result));
 }
 
-int		ft_mini_atoi(const char *str, int *i)
-{
-	long long int	result;
-
-	if (!(str[*i] >= '0' && str[*i] <= '9'))
-		return (-1);
-	while (str[*i] >= '0' && str[*i] <= '9')
-	{
-		result = result * 10 + (str[*i] - '0');
-		i++;
-		if (result > 2147483647)
-			return (-42);
-	}
-	return ((int)(result));
-}
