@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/03 04:10:05 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/03 04:10:05 by vlaroque         ###   ########.fr       */
+/*   Created: 2019/01/06 18:56:19 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/01/06 18:56:19 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+int		ft_printf(char *str, ...);
 
-int		ft_printf(char *str, ...)
+int		main(void)
 {
-	va_list		ap;
+	char	str[10] = "lolilol\n";
+	
+	ft_printf("lol %s", str);
 
-	va_start(ap, );
-	va_arg(ap, type);
-	va_end(ap);
 	return (0);
 }
