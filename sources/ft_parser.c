@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 18:51:01 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/09 17:16:25 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/11 16:15:35 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ int			ft_flagparser(char *str, int *i, t_arguments *args)
 		else if(str[*i] == '-')
 			args->flags = (args->flags | 1);
 		else if(str[*i] == '+')
-			args->flags = (args->flags | (1 << 2));
+			args->flags = (args->flags | (1 << 1));
 		else if(str[*i] == '0')
-			args->flags = (args->flags | (1 << 3));
+			args->flags = (args->flags | (1 << 2));
 		else if(str[*i] == ' ')
-			args->flags = (args->flags | (1 << 4));
+			args->flags = (args->flags | (1 << 3));
 		else if(str[*i] == '#')
-			args->flags = (args->flags | (1 << 5));
+			args->flags = (args->flags | (1 << 4));
 		else
 			ok = 0;
 		if (ok)
@@ -108,7 +108,7 @@ int			ft_parser(char *str, int *i, t_arguments *args)
 	else
 		args->precision = -1;
 	args->size = size_parser(str, i);
-	//if (str[] == )
+	
 	
 	
 	printf("\nargs : %d | width : %d | preci : %d | size = %d | i = %d\n",

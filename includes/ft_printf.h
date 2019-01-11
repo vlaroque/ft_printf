@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 11:04:12 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/09 12:03:58 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/11 17:29:43 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,11 @@ struct	s_arguments
 	char	typechar;
 };
 
-typedef struct s_types t_types;
-
-struct	s_types
-{
-	char	character;
-	int		(*ptr_on_ft)(void);
-};
-
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 int		ft_atoi(const char *str);
 int		ft_mini_atoi(const char *str, int *i);
 int		ft_parser(char *str, int *i, t_arguments *args);
+int		ft_conversions(char *str, int *i, t_arguments *args);
 
 #endif
