@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 11:04:12 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/07 18:56:40 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/09 12:03:58 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ typedef struct s_arguments t_arguments;
 struct	s_arguments
 {
 	unsigned char	flags;
-	int				width;
-	int				precision;
+	int		width;
+	int		precision;
 	unsigned char	size;
-	char			typechar;
+	char	typechar;
 };
 
 typedef struct s_types t_types;

@@ -6,13 +6,42 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 18:51:01 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/07 20:07:32 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/09 17:16:25 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_mini_atoi(const char *str, int *i)
+
+unsigned char	size_parser(char *str, int *i)
+{
+	unsigned char	res;
+
+	res = 0;
+	if (str[*i] == '\0')
+		return(-1);
+	else if (str[*i] == 'h' && str[*i + 1] && str[*i + 1] == 'h')
+		res = 1;
+	else if (str[*i] == 'h')
+		res = 2;
+	else if (str[*i] == 'l' && str[*i + 1] && str[*i + 1] == 'l')
+		res = 3;
+	else if (str[*i] == 'l')
+		res = 4;
+	else if (str[*i] == 'L')
+		res = 5;
+	if (res == 0)
+		return (0);
+	else if (res == 1 || res == 3)
+		(*i) = (*i) + 2;
+	else
+		(*i)++;
+	return (res);
+}
+
+//-42 en cas de nombre supperieur a int max, -1 en cas de nombre negatif ou absence de nombre.
+
+int			ft_mini_atoi(const char *str, int *i)
 {
 	long long int	result;
 
@@ -24,46 +53,43 @@ int		ft_mini_atoi(const char *str, int *i)
 		result = result * 10 + (str[*i] - '0');
 		if (result > 2147483647)
 			return (-42);
-		i++;
+		(*i)++;
 	}
 	return ((int)(result));
 }
 
-int		ft_flagparser(char *str, int *i, t_arguments *args)
+int			ft_flagparser(char *str, int *i, t_arguments *args)
 {
 	char	ok;
 
 	ok = 1;
-	args->flags = 0x00000000;
+	args->flags = 0x00;
 	while (ok)
 	{
 		if (str[*i] == '\0')
 			return (0);
 		else if(str[*i] == '-')
-			args->flags = (args->flags | 0x01);
+			args->flags = (args->flags | 1);
 		else if(str[*i] == '+')
-			args->flags = (args->flags | 0x02);
+			args->flags = (args->flags | (1 << 2));
 		else if(str[*i] == '0')
-			args->flags = (args->flags | 0x04);
+			args->flags = (args->flags | (1 << 3));
 		else if(str[*i] == ' ')
-			args->flags = (args->flags | 0x08);
+			args->flags = (args->flags | (1 << 4));
 		else if(str[*i] == '#')
-			args->flags = (args->flags | 0x10);
+			args->flags = (args->flags | (1 << 5));
 		else
 			ok = 0;
-		(*i)++;
+		if (ok)
+			(*i)++;
 	}
 	return (1);
 }
 
 /* -1 est une absence, -42 est une erreur */
 
-int		ft_parser(char *str, int *i, t_arguments *args)
+int			ft_parser(char *str, int *i, t_arguments *args)
 {
-	int		printchars;
-
-	printchars = 0;
-	(*i)++;
 	if (str[*i] == '%')
 	{
 		ft_putchar('%');
@@ -72,16 +98,20 @@ int		ft_parser(char *str, int *i, t_arguments *args)
 	} 
 	if(!ft_flagparser(str, i, args))
 		return(-1);
-	//args->width = ft_mini_atoi(str, i);
+	args->width = ft_mini_atoi(str, i);
 	if(str[*i] == '.')
 	{
 		(*i)++;
-		//args->precision = ft_mini_atoi(str, i);
-		printf("loltest\n");
+		if((args->precision = ft_mini_atoi(str, i)) < 0)
+			args->precision = -42;
 	}
-	printf("\n\nargs : %d | width : %d | preci : %d\n\n", (int)(args->flags), args->width, args->precision);
-	*i = 0;
-	char tab[]= "123456789"; 
-	printf("\n%d\n", ft_mini_atoi(tab, i));
-	return (printchars);
+	else
+		args->precision = -1;
+	args->size = size_parser(str, i);
+	//if (str[] == )
+	
+	
+	printf("\nargs : %d | width : %d | preci : %d | size = %d | i = %d\n",
+				(int)(args->flags), args->width, args->precision, args->size, *i);
+	return (1);
 }

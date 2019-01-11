@@ -24,7 +24,10 @@ int		ft_printf(char *str, ...)
 	while(str[i])
 	{
 		if (str[i] == '%')
+		{
+			i++;
 			ft_parser(str, &i, &args);
+		}
 		else
 			ft_putchar(str[i++]);
 	}
