@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 11:04:12 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/11 17:29:43 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/13 18:55:30 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int		ft_atoi(const char *str);
 int		ft_mini_atoi(const char *str, int *i);
 int		ft_parser(char *str, int *i, t_arguments *args);
 int		ft_conversions(char *str, int *i, t_arguments *args);
+int		ft_procent(t_arguments lol);
+int		ft_putc(t_arguments args);
 
 #endif

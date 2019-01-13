@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 18:51:01 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/11 16:15:35 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/13 18:37:17 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,6 @@ int			ft_flagparser(char *str, int *i, t_arguments *args)
 
 int			ft_parser(char *str, int *i, t_arguments *args)
 {
-	if (str[*i] == '%')
-	{
-		ft_putchar('%');
-		(*i)++;
-		return(1);
-	} 
 	if(!ft_flagparser(str, i, args))
 		return(-1);
 	args->width = ft_mini_atoi(str, i);
@@ -111,7 +105,7 @@ int			ft_parser(char *str, int *i, t_arguments *args)
 	
 	
 	
-	printf("\nargs : %d | width : %d | preci : %d | size = %d | i = %d\n",
-				(int)(args->flags), args->width, args->precision, args->size, *i);
+//	printf("\nargs : %d | width : %d | preci : %d | size = %d | i = %d\n",
+//				(int)(args->flags), args->width, args->precision, args->size, *i);
 	return (1);
 }

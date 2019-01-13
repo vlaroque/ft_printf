@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/07 11:11:17 by vlaroque          #+#    #+#              #
-#    Updated: 2019/01/11 13:41:17 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/01/13 18:45:16 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 CPPFLAGS = -I ./includes/
-SRC = ft_printf.c ft_basics.c ft_parser.c ft_conversions.c
+SRC = ft_printf.c ft_basics.c ft_parser.c ft_conversions.c \
+		ft_procent.c ft_putc.c
 SRCPATH = ./sources/
 OBJ = $(SRC:.c=.o)
 OBJPATH = ./objects/

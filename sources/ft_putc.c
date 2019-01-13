@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversions.h                                   :+:      :+:    :+:   */
+/*   ft_putc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/11 12:08:42 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/13 16:35:28 by vlaroque         ###   ########.fr       */
+/*   Created: 2019/01/13 18:43:35 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/01/13 18:45:56 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERSIONS_H
-# define CONVERSIONS_H
+#include "../includes/ft_printf.h"
 
-#include "ft_printf.h"
-
-typedef struct s_types t_types;
-
-struct	s_types
+int ft_putc(t_arguments args)
 {
-	char	typechar;
-	int		(*ptr_on_ft)(t_arguments);
-};
-
-int test(t_arguments args);
-
-t_types type_tab[] = {
-	{'%', &ft_procent},
-	{'c', &ft_putc},
-	{'s', &test},
-	{'p', &test},
-	{'\0', NULL}
-};
-#endif
+	(void)args;
+	printf("-CHAR-");
+	return (1);
+}

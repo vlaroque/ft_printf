@@ -23,16 +23,15 @@ int		ft_printf(char *str, ...)
 	va_start(ap, str);
 	while(str[i])
 	{
+		printf("%d", i);
 		if (str[i] == '%')
 		{
-			printf("lolilol\n");
 			i++;
 			ft_parser(str, &i, &args);
 			ft_conversions(str, &i, &args);
 		}
 		else
 			ft_putchar(str[i++]);
-		printf("i = %d\n", i);
 	}
 	va_end(ap);
 	return (0);

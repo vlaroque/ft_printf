@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 18:17:59 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/11 19:29:41 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/13 16:29:34 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		main(void)
 {
 	char	str[10];
 
-	ft_printf("%%lol %c %---123.456hhs poipoi \n", str);
+	ft_printf(">>%%lol %c %---123.456hhs poipoi \n", str);
 	return (0);
 }
 
