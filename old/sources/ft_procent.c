@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_procent.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/16 14:51:15 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/16 17:58:35 by vlaroque         ###   ########.fr       */
+/*   Created: 2019/01/13 16:21:04 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/01/13 16:30:08 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../includes/ft_printf.h"
 
-# include <stdarg.h>	//pour les args
-# include <stdlib.h>	//pour le malloc
-# include <stdio.h>
-
-int		ft_conversion(char *str, int *h);
-
-typedef struct s_special_chars t_spe_chars;
-struct	s_special_chars
+int		ft_procent(t_arguments lol)
 {
-	char	c;
-	int		(*f)(char *str, int *h);
-};
-
-void	ft_putchar(char c);
-
-# define NB_SPE_CHARS 1
-#endif
+	(void)lol;
+	ft_putchar('%');
+	return (1);
+}

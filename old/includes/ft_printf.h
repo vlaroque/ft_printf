@@ -5,28 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/16 14:51:15 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/16 17:58:35 by vlaroque         ###   ########.fr       */
+/*   Created: 2019/01/07 11:04:12 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/01/13 18:55:30 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdarg.h>	//pour les args
-# include <stdlib.h>	//pour le malloc
+# include <stdarg.h>
 # include <stdio.h>
 
-int		ft_conversion(char *str, int *h);
+typedef struct s_arguments t_arguments;
 
-typedef struct s_special_chars t_spe_chars;
-struct	s_special_chars
+struct	s_arguments
 {
-	char	c;
-	int		(*f)(char *str, int *h);
+	unsigned char	flags;
+	int		width;
+	int		precision;
+	unsigned char	size;
+	char	typechar;
 };
 
 void	ft_putchar(char c);
+void	ft_putstr(char *str);
+int		ft_atoi(const char *str);
+int		ft_mini_atoi(const char *str, int *i);
+int		ft_parser(char *str, int *i, t_arguments *args);
+int		ft_conversions(char *str, int *i, t_arguments *args);
+int		ft_procent(t_arguments lol);
+int		ft_putc(t_arguments args);
 
-# define NB_SPE_CHARS 1
 #endif
