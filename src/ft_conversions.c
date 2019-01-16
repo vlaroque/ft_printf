@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_conversions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/16 17:35:13 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/16 19:59:25 by vlaroque         ###   ########.fr       */
+/*   Created: 2019/01/16 20:04:47 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/01/16 20:06:28 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-int		ft_printf(char *str, ...);
+#include "ft_printf.h"
 
-int		main(void)
+int		ft_conversion(char *str, int *h)
 {
-	//printf("lol |%1$010.3d| %1$d\n", 12345, 67890);
-	ft_printf("lol%%%\n");
+	char	c;
+
+	printf("pourcent \n");
+	c = str[*h];
+	(*h)++;
 	return (0);
 }
