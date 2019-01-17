@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversions.c                                   :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/16 20:04:47 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/17 21:39:50 by vlaroque         ###   ########.fr       */
+/*   Created: 2018/11/13 15:40:19 by vlaroque          #+#    #+#             */
+/*   Updated: 2018/11/21 18:19:29 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "ft_parsing.h"
-
-int		ft_conversion(char *str, int *h, va_list *ap)
+int		ft_isdigit(int c)
 {
-	char		c;
-	t_parsedata	data;
-
-	(*h)++;
-	data.flags = ft_flagparser(str, h);
-	data.width = -1;
-	if (ft_isdigit(str[*h]))
-		data.width = mini_atoi(str, h);
-	data.precision = -1;
-	if (str[*h] == '.')
-		if (ft_isdigit(str[++(*h)]))
-			data.precision = mini_atoi(str, h);
-	data.size = ft_typeparser(str, h);
+	if (c >= '0' && c <= '9')
+		return (1);
 	return (0);
 }

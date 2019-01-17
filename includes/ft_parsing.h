@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_parsing.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/16 17:51:07 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/17 17:35:51 by vlaroque         ###   ########.fr       */
+/*   Created: 2019/01/17 21:38:12 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/01/17 21:39:15 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_PARSING_H
+# define FT_PARSING_H
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+char	ft_typeparser(char *str, int *h);
+int		mini_atoi(char *str, int *h);
+char	ft_flagparser(char *str, int *h);
+
+# endif

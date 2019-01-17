@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 17:35:13 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/16 19:59:25 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/17 21:43:34 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int		ft_printf(char *str, ...);
 
 int		main(void)
 {
-	//printf("lol |%1$010.3d| %1$d\n", 12345, 67890);
-	ft_printf("lol%%%\n");
+//	printf("lol |%7f| |%5f| |%d|\n", 12345.123456, 67890.6789);
+	ft_printf("lol%%%\n", 'z', 'd', 'f');
 	return (0);
 }

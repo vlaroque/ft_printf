@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 18:51:01 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/13 18:37:17 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/17 19:26:45 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			ft_flagparser(char *str, int *i, t_arguments *args)
 	char	ok;
 
 	ok = 1;
-	args->flags = 0x00;
+	args->flags = 0b0000;
 	while (ok)
 	{
 		if (str[*i] == '\0')

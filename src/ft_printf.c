@@ -6,32 +6,23 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 14:46:58 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/16 20:06:27 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/17 18:11:49 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_spe_chars	*init_spe_chars(void)
-{
-	t_spe_chars	*spe_chars_tab;
-	
-	if (!(spe_chars_tab = malloc(sizeof(t_spe_chars) * NB_SPE_CHARS)))
-		return (0);
-	spe_chars_tab[0].c = '%';
-	spe_chars_tab[0].f = ft_conversion;
-	return (spe_chars_tab);
-}
-
-int		char_analyser(char *str, int *h, t_spe_chars *tab)
+int		char_analyser(char *str, int *h, va_list *ap)
 {
 	int i;
+	t_spe_chars *tab_spe_chars;
 
+	tab_spe_chars = init_spe_chars();
 	i = 0;
-	while (i < NB_SPE_CHARS && str[*h] != tab[i].c)
+	while (i < NB_SPE_CHARS && str[*h] != tab_spe_chars[i].c)
 		i++;
-	if (str[*h] == tab[i].c)
-		return (tab[i].f(str, h));
+	if (str[*h] == tab_spe_chars[i].c)
+		return (tab_spe_chars[i].f(str, h, ap));
 	else if (str[*h])
 	{
 		ft_putchar(str[*h]);
@@ -46,13 +37,11 @@ int		ft_printf(char *str, ...)
 	int			h;
 	int			char_count;
 	va_list		ap;
-	t_spe_chars	*spe_char_tab;
 
 	h = 0;
 	char_count = 0;
-	spe_char_tab = init_spe_chars();
 	va_start(ap, str);
 	while(str[h])
-		char_count += char_analyser(str, &h, spe_char_tab);
+		char_count += char_analyser(str, &h, &ap);
 	return(char_count);
 }

@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversions.c                                   :+:      :+:    :+:   */
+/*   ft_conv_procent.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/16 20:04:47 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/17 21:39:50 by vlaroque         ###   ########.fr       */
+/*   Created: 2019/01/17 17:25:06 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/01/17 17:35:49 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "ft_parsing.h"
+#include	"ft_printf.h"
 
-int		ft_conversion(char *str, int *h, va_list *ap)
+int			ft_conv_procent(char *str, int *h)
 {
-	char		c;
-	t_parsedata	data;
-
+	ft_putchar('%');
 	(*h)++;
-	data.flags = ft_flagparser(str, h);
-	data.width = -1;
-	if (ft_isdigit(str[*h]))
-		data.width = mini_atoi(str, h);
-	data.precision = -1;
-	if (str[*h] == '.')
-		if (ft_isdigit(str[++(*h)]))
-			data.precision = mini_atoi(str, h);
-	data.size = ft_typeparser(str, h);
-	return (0);
+	return (1);
 }

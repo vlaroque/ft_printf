@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_data_init.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/16 17:51:07 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/17 17:35:51 by vlaroque         ###   ########.fr       */
+/*   Created: 2019/01/17 16:57:47 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/01/17 17:19:52 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_DATA_INIT_H
+# define FT_DATA_INIT_H
+# include "ft_printf.h"
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+
+#endif
