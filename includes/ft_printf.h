@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 14:51:15 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/18 09:43:52 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/18 10:50:06 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ t_spe_chars		*init_spe_chars(void);
 t_conv_chars	*init_conv_chars(void);
 int				ft_conv_procent(char *str, int *h, t_parsedata data, va_list *ap);
 int				ft_conv_c(char *str, int *h, t_parsedata data, va_list *ap);
+int				ft_conv_s(char *str, int *h, t_parsedata data, va_list *ap);
 
 # define NB_SPE_CHARS 1
-# define NB_CONV_CHARS 2
+# define NB_CONV_CHARS 3
 #endif
