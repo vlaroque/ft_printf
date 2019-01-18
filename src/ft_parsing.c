@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 21:05:38 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/17 21:36:10 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/18 10:18:22 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,23 @@ int		ft_twocharscmp(char *str, char char1, char char2)
 		return (1);
 	}
 	return (0);
+}
+
+void		*ft_char_to_func(char *str, int *h)
+{
+	int i;
+	t_conv_chars	*tab_conv_chars;
+
+	i = 0;
+	tab_conv_chars = init_conv_chars();
+	while (i < NB_CONV_CHARS && str[*h] != tab_conv_chars[i].c)
+		i++;
+	if (str[*h] == tab_conv_chars[i].c)
+	{
+		(*h)++;
+		return(tab_conv_chars[i].f);
+	}
+	return (NULL);
 }
 
 char	ft_typeparser(char *str, int *h)

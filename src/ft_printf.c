@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 14:46:58 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/17 18:11:49 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/18 10:18:44 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int		ft_printf(char *str, ...)
 	va_start(ap, str);
 	while(str[h])
 		char_count += char_analyser(str, &h, &ap);
+	va_end(ap);
 	return(char_count);
 }

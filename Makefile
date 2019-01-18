@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/07 11:11:17 by vlaroque          #+#    #+#              #
-#    Updated: 2019/01/17 21:06:13 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/01/18 09:25:48 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 CPPFLAGS = -I ./includes/
 SRC = ft_printf.c ft_putchar.c ft_conversions.c ft_conv_procent.c \
-		ft_data_init.c ft_isdigit.c ft_parsing.c
+		ft_data_init.c ft_isdigit.c ft_parsing.c ft_conv_c.c
 SRCPATH = ./src/
 OBJ = $(SRC:.c=.o)
 OBJPATH = ./obj/

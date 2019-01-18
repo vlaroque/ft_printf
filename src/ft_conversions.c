@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 20:04:47 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/17 21:39:50 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/18 10:19:12 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 int		ft_conversion(char *str, int *h, va_list *ap)
 {
-	char		c;
-	t_parsedata	data;
+	char			c;
+	t_parsedata		data;
+	int				(*f)(char *str, int *h, t_parsedata data, va_list *ap);
 
 	(*h)++;
 	data.flags = ft_flagparser(str, h);
@@ -28,5 +29,8 @@ int		ft_conversion(char *str, int *h, va_list *ap)
 		if (ft_isdigit(str[++(*h)]))
 			data.precision = mini_atoi(str, h);
 	data.size = ft_typeparser(str, h);
+	if(!(f = ft_char_to_func(str, h)))
+		return(-1);
+	(f)(str, h, data, ap);
 	return (0);
 }
