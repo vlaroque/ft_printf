@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 14:51:15 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/18 10:50:06 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/21 18:02:47 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int				ft_conversion(char *str, int *h, va_list *ap);
 // from libft
 void			ft_putchar(char c);
 int				ft_isdigit(int c);
+size_t			ft_strlen(const char *c);
+int				ft_putstrcmpt(char *str);
 
 typedef struct s_special_chars t_spe_chars;
 struct	s_special_chars

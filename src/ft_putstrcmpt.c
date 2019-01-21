@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstrcmpt.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/16 17:35:13 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/21 18:58:46 by vlaroque         ###   ########.fr       */
+/*   Created: 2019/01/21 17:59:09 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/01/21 18:01:56 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-void	ft_putchar(char c);
-int		ft_printf(char *str, ...);
+#include "ft_printf.h"
 
-int puiss10(int i)
+int		ft_putstrcmpt(char *str)
 {
-	int res;
-	res = 1;
-	while (i)
+	int i;
+
+	i = 0;
+	while (str[i])
 	{
-		res *=10;
+		ft_putchar(str[i]);
+		i++;
 	}
-	return (res);
-}
-
-int		main(void)
-{
-	int res = 123456789;
-
-//	printf("lol |%7f| |%5f| |%d|\n", 12345.123456, 67890.6789);
-//	res = ft_printf("lol%%|%%|%c|%s\n", 'z', "ceci est une phrase", 'f');
-	printf("%10%res = |%x|\n", (int)0);
+	return (i);
 }
