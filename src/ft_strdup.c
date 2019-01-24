@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_s.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/18 10:35:14 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/23 17:22:02 by vlaroque         ###   ########.fr       */
+/*   Created: 2018/11/12 13:02:14 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/01/24 21:01:16 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
+#include "ft_printf.h"
+#include <stdlib.h>
 
-int			ft_conv_s(char *lol, int *h, t_parsedata data, va_list *ap)
+char	*ft_strdup(const char *s1)
 {
-	char	*str;
+	int		i;
+	char	*newstr;
 
-	str = ft_strdup((void *)va_arg(*ap, void *));
-	if (data.precision != -1 && data.precision < ft_strlen(str))
-		str[data.precision] = '\0';
-	return (ft_printer(str, 0, data));
+	i = 0;
+	if (!s1)
+		return (NULL);
+	if (!(newstr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1))))
+		return (NULL);
+	while (s1[i])
+	{
+		newstr[i] = s1[i];
+		i++;
+	}
+	newstr[i] = 0;
+	return (newstr);
 }

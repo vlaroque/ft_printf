@@ -6,11 +6,12 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 14:54:08 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/21 18:45:32 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/24 20:58:10 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <unistd.h>
 
 int		ft_rintxtime(char c, int x)
 {
@@ -36,11 +37,13 @@ int		ft_printer(char *res_str, char isnbr, t_parsedata data)
 		negnbr = 1;
 	res_strlen = (int)ft_strlen(res_str);
 	//impression des espaces avant la str
-	if(data.width > res_strlen)
+	if(data.width > res_strlen + printedchars && !(data.flags & 1))
 	{
 		while (data.width > res_strlen + printedchars)
-		putchar(' ');
-		printedchars++;
+		{
+			ft_putchar(' ');
+			printedchars++;
+		}
 	}
 	if(negnbr)
 	{
@@ -48,7 +51,17 @@ int		ft_printer(char *res_str, char isnbr, t_parsedata data)
 		printedchars++;
 	}
 	//signe
-	//impression de la str sur la sorite standart
+	//impression de la str sur la sorite standart (gestion de la precision se fait dans les fonctions specifiques)
 	printedchars += ft_putstrcmpt(res_str);
 	//impression des espaces apres la str
+	if(data.width > res_strlen + printedchars && (data.flags & 1))
+	{
+		while (data.width >  printedchars)
+		{
+			ft_putchar(' ');
+			printedchars++;
+		}
+	}
+//	free(res_str);
+	return(printedchars);
 }

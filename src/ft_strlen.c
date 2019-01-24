@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:15:22 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/21 18:17:36 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/24 21:07:55 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int		ft_strlen(const char *c)
 	int i;
 
 	i = 0;
+	if (!c)
+		return (0);
 	while (c[i])
 		i++;
 	return (i);

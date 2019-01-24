@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/07 11:11:17 by vlaroque          #+#    #+#              #
-#    Updated: 2019/01/21 18:02:30 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/01/24 16:06:31 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CFLAGS = -Wall -Wextra -Werror
 CPPFLAGS = -I ./includes/
 SRC = ft_printf.c ft_putchar.c ft_conversions.c ft_conv_procent.c \
 		ft_data_init.c ft_isdigit.c ft_parsing.c ft_conv_c.c ft_conv_s.c\
-		ft_strlen.c ft_putstrcmpt.c
+		ft_strlen.c ft_putstrcmpt.c ft_strdup.c ft_printer.c ft_conv_d.c\
+		ft_itoabase.c
 SRCPATH = ./src/
 OBJ = $(SRC:.c=.o)
 OBJPATH = ./obj/
@@ -25,7 +26,7 @@ INCPATH = ./includes/
 
 ifdef FLAGS
 	ifeq ($(FLAGS), no)
-		CFLAGS=
+		CFLAGS= -g
 	endif
 	ifeq ($(FLAGS), debug)
 		CFLAGS= -Wall -Wextra -Werror -ansi -pedantic -g

@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 14:46:58 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/18 10:18:44 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/23 16:37:38 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		char_analyser(char *str, int *h, va_list *ap)
 	i = 0;
 	while (i < NB_SPE_CHARS && str[*h] != tab_spe_chars[i].c)
 		i++;
-	if (str[*h] == tab_spe_chars[i].c)
+	if (i < NB_SPE_CHARS && str[*h] == tab_spe_chars[i].c)
 		return (tab_spe_chars[i].f(str, h, ap));
 	else if (str[*h])
 	{

@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 17:25:06 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/18 10:18:59 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/23 17:28:35 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int			ft_conv_procent(char *str, int *h, t_parsedata data, va_list *ap)
 {
-	ft_putchar('%');
-	return (1);
+	char *res_str;
+
+	res_str = ft_strdup("%");
+	return (ft_printer(res_str, 0, data));
 }

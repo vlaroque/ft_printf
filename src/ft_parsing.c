@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 21:05:38 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/18 10:18:22 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/23 14:59:20 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		mini_atoi(char *str, int *h)
 	res = 0;
 	while (ft_isdigit(str[*h]))
 		{
-			res = res * 10 + (str[*h] + '0');
+			res = res * 10 + (str[*h] - '0');
 			(*h)++;
 		}
 	return (res);

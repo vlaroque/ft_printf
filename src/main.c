@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 17:35:13 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/21 18:58:46 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/24 21:24:35 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int		main(void)
 	int res = 123456789;
 
 //	printf("lol |%7f| |%5f| |%d|\n", 12345.123456, 67890.6789);
-//	res = ft_printf("lol%%|%%|%c|%s\n", 'z', "ceci est une phrase", 'f');
-	printf("%10%res = |%x|\n", (int)0);
+	res = ft_printf("PHRASE%20%ECRITE%20c|\n|%-30.5s|\n|%30.5s|\n", 'f', "ceci est une phrase", "ceci est une phrase");
+	res = ft_printf("Test de ftmbre : |%-.15d|\n", -12345);
+	//printf("Test de nombre : |%-.15d|\n", -12345);
+	res = ft_printf("Test de ftmbre : |%-.15d|\n", 12345);
+	//printf("Test de nombre : |%-.15d|\n", 12345);
+//	printf("res = %d\n", res);
 }
