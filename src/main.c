@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 17:35:13 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/31 10:38:48 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/31 13:04:21 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int puiss10(int i)
 int		main(int ac, char **av)
 {
 	int res = 12345;
+	char res2 = -120;
 
 	printf("vrai printf:\n");
 	printf(av[1], res);

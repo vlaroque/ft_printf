@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:36:00 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/31 09:24:09 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/31 13:16:33 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,39 @@ void	mega_putnbr_base(intmax_t nbr, char *base)
 	}
 	else
 		ft_putchar(base[nbr % basesize]);
+}
+
+
+int		put_zeros(t_parsedata data, int len, int prefix)
+{
+	int res;
+
+	if (data.precision > len)
+		res = print_char_x_times('0', data.precision - len);
+	else if ((data.flags & (1 << 2)) && !(data.flags & 1) && data.precision == -1)
+		res = print_char_x_times('0', data.width - (prefix + len));
+	return (res);
+}
+
+int		put_spaces(int printedchars, t_parsedata data, int len, int prefix)
+{
+	int		res;
+
+	res = 0;
+	if (printedchars == 0 && data.width > (len + prefix) && !(data.flags & 1)
+				&& !(data.flags & (1 << 2)))
+	{
+		if (data.precision > len)
+			res = print_char_x_times(' ', data.width - (data.precision + prefix));
+		else
+			res = print_char_x_times(' ', data.width - (len + prefix));
+	}
+	else if (printedchars != 0 && data.width > (len + prefix) && (data.flags & 1))
+	{
+		if (data.precision > len)
+			res = print_char_x_times(' ', data.width - (data.precision + prefix));
+		else
+			res = print_char_x_times(' ', data.width - (len + prefix));
+	}
+	return (res);
 }

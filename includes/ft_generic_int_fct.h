@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:42:45 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/31 09:10:16 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/31 13:16:52 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,7 @@
 int		print_char_x_times(char c, int times);
 int		mega_nbrlen_base(intmax_t nbr, char *base);
 void	mega_putnbr_base(intmax_t nbr, char *base);
+int		put_zeros(t_parsedata data, int len, int prefix);
+int		put_spaces(int printedchars, t_parsedata data, int len, int prefix);
 
 #endif
