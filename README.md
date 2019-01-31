@@ -11,3 +11,5 @@ https://docs.microsoft.com/fr-fr/cpp/c-runtime-library/format-specification-synt
 Cette librairie permet l'utilisation d'un nombre d'arguments inconnus dans une fonction.
 Per;ettant ainsi de faire une fonction que l'on appelle variadique.
 
+## librairie stdint.h
+Permet l'utilisation de `intmax_t` et `uintmax_t` pour une meilleure portabilitee du projet, car s'adaptera a n'importe quelle machine.

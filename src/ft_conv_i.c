@@ -6,69 +6,92 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 15:08:43 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/25 16:33:57 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/31 10:57:58 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
 #include	<stdlib.h>
+#include	<stdint.h>
+#include	"ft_printf.h"
+#include	"ft_generic_int_fct.h"
 
-typedef struct s_nbr_data	t_nbr_data;
-struct		s_nbr_data
+static int	put_zeros(t_parsedata data, int len, char sign)
 {
-	int		neg;
-	char	sign;
-	int		nbr_len;
-};
+	int res;
+	int signlen;
 
-static char	ft_whatasign(t_parsedata data, va_list ap, t_nbr_data *nbr_data)
-{
-	if (nbr_data->neg)
-		nbr_data->sign = '-';
-	else if ()
+	signlen = 1;
+	if (sign == '\0')
+		signlen = 0;
+	if (data.precision > len)
+		res = print_char_x_times('0', data.precision - len);
+	else if ((data.flags & (1 << 2)) && !(data.flags & 1) && data.precision == -1)
+		res = print_char_x_times('0', data.width - (signlen + len));
+	return (res);
 }
 
-static int	ft_char_cmpt(char *str)
+static int	put_spaces(int printedchars, t_parsedata data, int len, char sign)
 {
-	int i;
+	int		signlen;
+	int		res;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char		*ft_mini_itoabase(int value, char *basechars, int *neg)
-{
-	char	buff[70];
-	char	*ptr;
-	int		base;
-
-	*neg = 0;
-	base = ft_char_cmpt(basechars);
-	ptr = &buff[69];
-	*(ptr) = '\0';
-	if (value < 0)
+	signlen = 1;
+	res = 0;
+	if (sign == '\0')
+		signlen = 0;
+	//if (data.flags & (1 << 2))
+	//	return (0);
+	//printf("lol\n");
+	if (printedchars == 0 && data.width > (len + signlen) && !(data.flags & 1)
+				&& !(data.flags & (1 << 2)))
 	{
-		*(--ptr) = basechars[-(value % base)];
-		value = -(value / base);
-		*neg = 1;
+		if (data.precision > len)
+			res = print_char_x_times(' ', data.width - (data.precision + signlen));
+		else
+			res = print_char_x_times(' ', data.width - (len + signlen));
 	}
-	while (value)
+	else if (printedchars != 0 && data.width > (len + signlen) && (data.flags & 1))
 	{
-		*(--ptr) = basechars[value % base];
-		value = value / base;
+		if (data.precision > len)
+			res = print_char_x_times(' ', data.width - (data.precision + signlen));
+		else
+			res = print_char_x_times(' ', data.width - (len + signlen));
 	}
-	return (ft_strdup(ptr));
+	return (res);
 }
 
-int		ft_conv_i(char *str, int *h, t_parsedata data, va_list *ap)
+static char	what_a_sign(intmax_t nbr, t_parsedata data)
 {
-	char		*res_str;
-	t_nbr_data	nbr_data;
+	if (nbr < 0)
+		return ('-');
+	else if (data.flags & (1 << 1))
+		return ('+');
+	else if (data.flags & (1 << 3))
+		return (' ');
+	return ('\0');
+}
 
-	res_str = ft_mini_itoabase((int)va_arg(*ap, int), "0123456789", &(nbr_data.neg));
-	nbr_data.nbr_len = ft_strlen(res_str);
-	
-	return (ft_printer(res_str, 0, data));
+int			ft_conv_i(char *nostr, int *noh, t_parsedata data, va_list *ap)
+{
+	intmax_t	nbr;
+	char		sign;
+	int			len;
+	int			printedchars;
+
+	printedchars = 0;
+	//ajouter la fonction qui gere les difft sizes
+	nbr = va_arg(*ap, int);
+	sign = what_a_sign(nbr, data);
+	len = mega_nbrlen_base(nbr, "0123456789");
+	printedchars += put_spaces(printedchars, data, len, sign);
+	if (sign)
+	{
+		ft_putchar(sign);
+		printedchars++;
+	}
+	printedchars += put_zeros(data, len, sign);
+	mega_putnbr_base(nbr, "0123456789");
+	printedchars += len;
+	printedchars += put_spaces(printedchars, data, len, sign);
+	return (printedchars);
 }

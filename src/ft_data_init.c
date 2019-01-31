@@ -6,11 +6,11 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:55:42 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/24 12:20:03 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/31 09:07:53 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_data_init.h"
+#include "ft_printf.h"
 
 t_spe_chars		*init_spe_chars(void)
 {
@@ -42,6 +42,8 @@ t_conv_chars	*init_conv_chars(void)
 		conv_chars_tab[2].f = ft_conv_s;
 		conv_chars_tab[3].c = 'd';
 		conv_chars_tab[3].f = ft_conv_d;
+		conv_chars_tab[4].c = 'i';
+		conv_chars_tab[4].f = ft_conv_i;
 	}
 	return (conv_chars_tab);
 }
