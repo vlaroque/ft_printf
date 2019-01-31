@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:36:00 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/31 16:06:26 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/31 17:46:17 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		print_char_x_times(char c, int times)
 	return (res);
 }
 
-int		mega_nbrlen_base(intmax_t nbr, char *base)
+int		mega_nbrlen_base_unsigned(uintmax_t nbr, char *base)
 {
 	int	i;
 	int	basesize;

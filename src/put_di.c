@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 15:08:43 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/31 14:45:58 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/31 17:44:11 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,40 +32,43 @@ static	intmax_t	getint(t_parsedata data, va_list *ap)
 	return (res);
 }
 
-static char	what_a_sign(intmax_t nbr, t_parsedata data, int *prefixlen)
+static char	what_a_sign(intmax_t nbr, t_parsedata data)
 {
-	*prefixlen = 1;
 	if (nbr < 0)
 		return ('-');
 	else if (data.flags & (1 << 1))
 		return ('+');
 	else if (data.flags & (1 << 3))
 		return (' ');
-	*prefixlen = 0;
 	return ('\0');
+}
+
+static int	is_prefix(char c)
+{
+	if (c == '\0')
+		return (0);
+	return (1);
 }
 
 int			put_di(char *nostr, int *noh, t_parsedata data, va_list *ap)
 {
 	intmax_t	nbr;
+	uintmax_t	posinbr;
 	char		sign;
-	int			prefix;
 	int			len;
 	int			printedchars;
 
 	printedchars = 0;
 	nbr = getint(data, ap);
-	sign = what_a_sign(nbr, data, &prefix);
-	len = mega_nbrlen_base(nbr, "0123456789");
-	printedchars += put_spaces(printedchars, data, len, prefix);
-	if (sign)
-	{
+	sign = what_a_sign(nbr, data);
+	posinbr = positive_me(nbr);
+	len = mega_nbrlen_base_unsigned(nbr, "0123456789");
+	printedchars += put_spaces(printedchars, data, len, is_prefix(sign));
+	if (sign && printedchars++)
 		ft_putchar(sign);
-		printedchars++;
-	}
-	printedchars += put_zeros(data, len, prefix);
-	mega_putnbr_base(nbr, "0123456789");
+	printedchars += put_zeros(data, len, is_prefix(sign));
+	mega_putnbr_base_unsigned(nbr, "0123456789");
 	printedchars += len;
-	printedchars += put_spaces(printedchars, data, len, prefix);
+	printedchars += put_spaces(printedchars, data, len, is_prefix(sign));
 	return (printedchars);
 }
