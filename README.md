@@ -13,3 +13,17 @@ Per;ettant ainsi de faire une fonction que l'on appelle variadique.
 
 ## librairie stdint.h
 Permet l'utilisation de `intmax_t` et `uintmax_t` pour une meilleure portabilitee du projet, car s'adaptera a n'importe quelle machine.
+
+
+## /!\ Probleme a resoudre!
+```
+➜  ft_printf git:(master) ✗ ./a.out "|%020.d|"
+vrai printf:
+|               12345|
+faux printf:
+|12345|%                                                                                                                                                 ➜  ft_printf git:(master) ✗ ./a.out "|%20.d|"
+vrai printf:
+|               12345|
+faux printf:
+|               12345|%                                                                                                                                  ➜  ft_printf git:(master) ✗
+```

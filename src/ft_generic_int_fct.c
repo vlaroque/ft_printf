@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:36:00 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/31 13:16:33 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/31 16:06:26 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,16 @@ int		mega_nbrlen_base(intmax_t nbr, char *base)
 	return (i);
 }
 
-void	mega_putnbr_base(intmax_t nbr, char *base)
+uintmax_t	positive_me(intmax_t nbr)
 {
-	int		basesize;
-
-	basesize = ft_strlen(base);
-	if (nbr < 0)
-	{
-		if (nbr <= -basesize)
-			mega_putnbr_base(-(nbr / basesize), base);
-		ft_putchar(base[-(nbr % basesize)]);
-	}
-	else if (nbr >= basesize)
-	{
-		mega_putnbr_base(nbr / basesize, base);
-		ft_putchar(base[nbr % basesize]);
-	}
+	uintmax_t	res;
+	
+	if (nbr == INTMAX_MIN)
+		res = ((uintmax_t)INTMAX_MAX) + 1;
 	else
-		ft_putchar(base[nbr % basesize]);
+		res = (uintmax_t)(-nbr);
+	return (res);
 }
-
 
 int		put_zeros(t_parsedata data, int len, int prefix)
 {

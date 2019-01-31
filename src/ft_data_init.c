@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:55:42 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/31 09:07:53 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/31 16:04:19 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ t_conv_chars	*init_conv_chars(void)
 		conv_chars_tab[2].c = 's';
 		conv_chars_tab[2].f = ft_conv_s;
 		conv_chars_tab[3].c = 'd';
-		conv_chars_tab[3].f = ft_conv_d;
+		conv_chars_tab[3].f = put_di;
 		conv_chars_tab[4].c = 'i';
-		conv_chars_tab[4].f = ft_conv_i;
+		conv_chars_tab[4].f = put_di;
+		conv_chars_tab[5].c = 'u';
+		conv_chars_tab[5].f = put_u;
 	}
 	return (conv_chars_tab);
 }

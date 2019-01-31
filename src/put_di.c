@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_i.c                                        :+:      :+:    :+:   */
+/*   put_di.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 15:08:43 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/31 12:23:50 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/01/31 14:45:58 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,50 +18,17 @@
 static	intmax_t	getint(t_parsedata data, va_list *ap)
 {
 	intmax_t res;
+
 	if (data.size == 0)
 		res = (intmax_t)va_arg(*ap, int);
 	else if (data.size == 1)
-		res = (intmax_t)va_arg(*ap, int);
+		res = (intmax_t)(char)va_arg(*ap, int);
 	else if (data.size == 2)
-		res = (intmax_t)va_arg(*ap, int);
+		res = (intmax_t)(short int)va_arg(*ap, int);
 	else if (data.size == 3)
 		res = (intmax_t)va_arg(*ap, long int);
 	else if (data.size == 4)
 		res = (intmax_t)va_arg(*ap, long long int);
-	return (res);
-}
-
-static int	put_zeros(t_parsedata data, int len, int prefix)
-{
-	int res;
-
-	if (data.precision > len)
-		res = print_char_x_times('0', data.precision - len);
-	else if ((data.flags & (1 << 2)) && !(data.flags & 1) && data.precision == -1)
-		res = print_char_x_times('0', data.width - (prefix + len));
-	return (res);
-}
-
-static int	put_spaces(int printedchars, t_parsedata data, int len, int prefix)
-{
-	int		res;
-
-	res = 0;
-	if (printedchars == 0 && data.width > (len + prefix) && !(data.flags & 1)
-				&& !(data.flags & (1 << 2)))
-	{
-		if (data.precision > len)
-			res = print_char_x_times(' ', data.width - (data.precision + prefix));
-		else
-			res = print_char_x_times(' ', data.width - (len + prefix));
-	}
-	else if (printedchars != 0 && data.width > (len + prefix) && (data.flags & 1))
-	{
-		if (data.precision > len)
-			res = print_char_x_times(' ', data.width - (data.precision + prefix));
-		else
-			res = print_char_x_times(' ', data.width - (len + prefix));
-	}
 	return (res);
 }
 
@@ -78,7 +45,7 @@ static char	what_a_sign(intmax_t nbr, t_parsedata data, int *prefixlen)
 	return ('\0');
 }
 
-int			ft_conv_i(char *nostr, int *noh, t_parsedata data, va_list *ap)
+int			put_di(char *nostr, int *noh, t_parsedata data, va_list *ap)
 {
 	intmax_t	nbr;
 	char		sign;
@@ -96,7 +63,7 @@ int			ft_conv_i(char *nostr, int *noh, t_parsedata data, va_list *ap)
 		ft_putchar(sign);
 		printedchars++;
 	}
-	printedchars += put_zeros(data, len, sign);
+	printedchars += put_zeros(data, len, prefix);
 	mega_putnbr_base(nbr, "0123456789");
 	printedchars += len;
 	printedchars += put_spaces(printedchars, data, len, prefix);
