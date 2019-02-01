@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:36:00 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/31 17:46:17 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/01 15:14:49 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,17 @@ uintmax_t	positive_me(intmax_t nbr)
 	
 	if (nbr == INTMAX_MIN)
 		res = ((uintmax_t)INTMAX_MAX) + 1;
-	else
+	else if (nbr < 0)
 		res = (uintmax_t)(-nbr);
+	else
+		res = (uintmax_t)(nbr);
 	return (res);
 }
 
 int		put_zeros(t_parsedata data, int len, int prefix)
 {
 	int res;
-
+//	printf ("pre = %d , len = %d\n", data.precision, len);
 	if (data.precision > len)
 		res = print_char_x_times('0', data.precision - len);
 	else if ((data.flags & (1 << 2)) && !(data.flags & 1) && data.precision == -1)
@@ -85,4 +87,13 @@ int		put_spaces(int printedchars, t_parsedata data, int len, int prefix)
 			res = print_char_x_times(' ', data.width - (len + prefix));
 	}
 	return (res);
+}
+
+t_parsedata	flag_cleaner(t_parsedata data)
+{
+	if ((data.flags & (1 << 2)) && (data.flags & 1))
+		data.flags -= (1 << 2);
+	if (data.flags & (1 << 2) && (data.precision >= 0 || data.precision == -42))
+		data.flags -= (1 << 2);
+	return (data);
 }

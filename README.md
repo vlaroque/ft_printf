@@ -21,9 +21,11 @@ Permet l'utilisation de `intmax_t` et `uintmax_t` pour une meilleure portabilite
 vrai printf:
 |               12345|
 faux printf:
-|12345|%                                                                                                                                                 ➜  ft_printf git:(master) ✗ ./a.out "|%20.d|"
+|12345|%
+ft_printf git:(master) ✗ ./a.out "|%20.d|"
 vrai printf:
 |               12345|
 faux printf:
-|               12345|%                                                                                                                                  ➜  ft_printf git:(master) ✗
+|               12345|%
+ft_printf git:(master) ✗
 ```

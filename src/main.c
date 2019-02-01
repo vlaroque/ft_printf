@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 17:35:13 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/31 13:28:46 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/01 18:11:36 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ int		main(int ac, char **av)
 {
 	int res = 12345;
 	char res2 = -120;
+	unsigned long long reslong = 184467440737095516;
 
 	printf("vrai printf:\n");
-	printf(av[1], res);
+	printf(av[1], reslong);
 	printf("\nfaux printf:\n");
-	ft_printf(av[1], res);
+	ft_printf(av[1], reslong);
+	printf("%.3s", "Pomme");
 //	printf("lol |%7f| |%5f| |%d|\n", 12345.123456, 67890.6789);
 	//res = ft_printf("PHRASE%-20%ECRITE%20c|\n|%-30.5s|\n|%30.5s|\n", 'f', "ceci est une phrase", "ceci est une phrase");
 	//res = ft_printf("Test de ftmbre : |%010i|\n", -12345);
