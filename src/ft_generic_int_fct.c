@@ -59,6 +59,7 @@ int		put_zeros(t_parsedata data, int len, int prefix)
 {
 	int res;
 //	printf ("pre = %d , len = %d\n", data.precision, len);
+	res = 0;
 	if (data.precision > len)
 		res = print_char_x_times('0', data.precision - len);
 	else if ((data.flags & (1 << 2)) && !(data.flags & 1) && data.precision == -1)

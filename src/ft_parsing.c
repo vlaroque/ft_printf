@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 21:05:38 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/31 10:34:46 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/04 16:21:47 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ char	ft_typeparser(char *str, int *h)
 		res = 3;
 	else if (ft_twocharscmp(str + (*h), 'L', '\0'))
 		res = 5;
+	else if (ft_twocharscmp(str + (*h), 'j', '\0'))
+		res = 6;
 	else
 		return(0);
 	if (res == 1 || res == 4)
@@ -88,12 +90,10 @@ int		mini_atoi(char *str, int *h)
 
 char	ft_flagparser(char *str, int *h)
 {
-	char	ok;
 	char	flags;
 
-	ok = 1;
 	flags = 0;
-	while (ok)
+	while (1)
 	{
 		if (str[*h] == '\0')
 			return (-1);
@@ -108,9 +108,8 @@ char	ft_flagparser(char *str, int *h)
 		else if(str[*h] == '#')
 			flags = (flags | (1 << 4));
 		else
-			ok = 0;
-		if (ok)
-			(*h)++;
+			break;
+		(*h)++;
 	}
 	return (flags);
 }

@@ -6,19 +6,22 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/07 11:11:17 by vlaroque          #+#    #+#              #
-#    Updated: 2019/02/01 14:59:12 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/02/04 14:15:38 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+
+FLAGS=no
+
 CPPFLAGS = -I ./includes/
 SRC = ft_printf.c ft_putchar.c ft_conversions.c ft_conv_procent.c \
 		ft_data_init.c ft_isdigit.c ft_parsing.c ft_conv_c.c ft_conv_s.c\
 		ft_strlen.c ft_putstrcmpt.c ft_strdup.c ft_printer.c \
 		put_di.c ft_generic_int_fct.c put_u.c putnbr_base.c put_oxX.c\
-		getint_varg.c
+		getint_varg.c put_csppc.c
 SRCPATH = ./src/
 OBJ = $(SRC:.c=.o)
 OBJPATH = ./obj/
@@ -50,6 +53,10 @@ clean :
 
 fclean : clean
 	rm -Rf $(NAME)
+
+re : 
+	$(MAKE) fclean
+	$(MAKE) all
 
 test : all
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(SRCPATH)main.c libftprintf.a

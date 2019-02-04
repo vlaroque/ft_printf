@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 14:54:08 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/26 15:45:47 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/04 17:36:46 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_printer(char *res_str, char isnbr, t_parsedata data)
 		printedchars++;
 	}
 	//signe
-	//impression de la str sur la sorite standart (gestion de la precision se fait dans les fonctions specifiques)
+	//impression de la str sur la sortie standart (gestion de la precision se fait dans les fonctions specifiques)
 	printedchars += ft_putstrcmpt(res_str);
 	//impression des espaces apres la str
 	if(data.width > res_strlen + printedchars && (data.flags & 1))
