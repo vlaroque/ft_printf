@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:42:45 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/01 15:13:41 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/04 19:03:52 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int			put_zeros(t_parsedata data, int len, int prefix);
 int			put_spaces(int printedchars, t_parsedata data, int len, int prefix);
 uintmax_t	positive_me(intmax_t nbr);
 t_parsedata	flag_cleaner(t_parsedata data);
+int			zero(t_parsedata data);
 
 #endif

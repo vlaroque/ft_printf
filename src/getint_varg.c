@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 14:43:52 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/04 16:12:11 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/04 17:54:53 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ uintmax_t	getuint(t_parsedata data, va_list *ap)
 		res = (uintmax_t)va_arg(*ap, unsigned long long int);
 	else if (data.size == 6)
 		res = (uintmax_t)va_arg(*ap, uintmax_t);
+	else if (data.size == 7)
+		res = (uintmax_t)va_arg(*ap, ssize_t);
 	return (res);
 }
 
@@ -48,5 +50,7 @@ intmax_t	getint(t_parsedata data, va_list *ap)
 		res = (intmax_t)va_arg(*ap, long long int);
 	else if (data.size == 6)
 		res = (intmax_t)va_arg(*ap, intmax_t);
+	else if (data.size == 7)
+		res = (intmax_t)va_arg(*ap, ssize_t);
 	return (res);
 }

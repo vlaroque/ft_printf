@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 21:05:38 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/04 16:21:47 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/04 17:54:00 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ char	ft_typeparser(char *str, int *h)
 		res = 5;
 	else if (ft_twocharscmp(str + (*h), 'j', '\0'))
 		res = 6;
+	else if (ft_twocharscmp(str + (*h), 'z', '\0'))
+		res = 7;
 	else
 		return(0);
 	if (res == 1 || res == 4)

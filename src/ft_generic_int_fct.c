@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:36:00 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/01 15:14:49 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/04 19:03:50 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,18 @@ t_parsedata	flag_cleaner(t_parsedata data)
 	if (data.flags & (1 << 2) && (data.precision >= 0 || data.precision == -42))
 		data.flags -= (1 << 2);
 	return (data);
+}
+
+int		zero(t_parsedata data)
+{
+	intmax_t	nbr;
+	int			len;
+	int			printedchars;
+
+	printedchars = 0;
+	len = 0;
+	printedchars += put_spaces(printedchars, data, len, 0);
+//	printedchars += put_zeros(data, len, 0);
+	printedchars += put_spaces(printedchars, data, len, 0);
+	return (printedchars);
 }

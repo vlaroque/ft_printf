@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 15:19:54 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/01 15:37:31 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/04 19:07:15 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int			put_o(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	data = flag_cleaner(data);
 	nbr = getuint(data, ap);
 	prefix = 0;
-	if (data.flags & (1 << 4))
+	if (nbr == 0 && (data.precision == 0 || data.precision == -42))
+		return(zero(data));
+	if ((data.flags & (1 << 4)) && nbr)
 		prefix = 1;
 	len = mega_nbrlen_base_unsigned(nbr, "01234567");
 	printedchars += put_spaces(printedchars, data, len, prefix);
@@ -51,7 +53,9 @@ int			put_x(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	data = flag_cleaner(data);
 	nbr = getuint(data, ap);
 	prefix = 0;
-	if (data.flags & (1 << 4))
+	if (nbr == 0 && (data.precision == 0 || data.precision == -42))
+		return(zero(data));
+	if ((data.flags & (1 << 4)) && nbr)
 		prefix = 2;
 	len = mega_nbrlen_base_unsigned(nbr, "0123456789abcdef");
 	printedchars += put_spaces(printedchars, data, len, prefix);
@@ -75,7 +79,9 @@ int			put_X(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	data = flag_cleaner(data);
 	nbr = getuint(data, ap);
 	prefix = 0;
-	if (data.flags & (1 << 4))
+	if (nbr == 0 && (data.precision == 0 || data.precision == -42))
+		return(zero(data));
+	if ((data.flags & (1 << 4)) && nbr)
 		prefix = 2;
 	len = mega_nbrlen_base_unsigned(nbr, "0123456789ABCDEF");
 	printedchars += put_spaces(printedchars, data, len, prefix);

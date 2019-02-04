@@ -6,14 +6,14 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 14:43:08 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/01 13:34:59 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/04 18:58:12 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	<stdint.h>
 #include	"ft_printf.h"
 
-/*void	mega_putnbr_base(intmax_t nbr, char *base)
+void	mega_putnbr_base(intmax_t nbr, char *base)
 {
 	int		basesize;
 
@@ -32,7 +32,7 @@
 	else
 		ft_putchar(base[nbr % basesize]);
 }
-*/
+
 void	mega_putnbr_base_unsigned(uintmax_t nbr, char *base)
 {
 	int		basesize;

@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 15:08:43 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/01 15:14:07 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/04 19:03:51 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int			put_di(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	nbr = getint(data, ap);
 	sign = what_a_sign(nbr, data);
 	posinbr = positive_me(nbr);
+	if (posinbr == 0 && (data.precision == 0 || data.precision == -42))
+		return(zero(data));
 	len = mega_nbrlen_base_unsigned(posinbr, "0123456789");
 	printedchars += put_spaces(printedchars, data, len, is_prefix(sign));
 	if (sign && (printedchars++ || 1))
