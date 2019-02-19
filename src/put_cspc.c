@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_csppc.c                                        :+:      :+:    :+:   */
+/*   put_cspc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:56:27 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/04 17:48:15 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/19 16:48:38 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int			put_s(char *lol, int *h, t_parsedata data, va_list *ap)
 	str = (char *)va_arg(*ap, void *);
 	if(str)
 	{	
-		str[data.precision] = '\0';
+		if (data.precision > 0 && data.precision < ft_strlen(str))
+			str[data.precision] = '\0';
 		len = ft_strlen(str);
 	}
 	else
@@ -94,7 +95,10 @@ int			put_c(char *lol, int *h, t_parsedata data, va_list *ap)
 	if (c)
 		printedchars += ft_putstrcmpt(str);
 	else
-		printedchars += ft_putstrcmpt("^@") - 1;
+	{
+		printedchars += 1;
+		ft_putchar('\0');
+	}
 	printedchars += put_spaces_csppc(data, len, printedchars, 1);
 	return (printedchars);
 }

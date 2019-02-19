@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 20:04:47 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/04 18:51:43 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/19 15:57:12 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_conversion(char *str, int *h, va_list *ap)
 	}
 	data.size = ft_typeparser(str, h);
 	if (!(f = ft_char_to_func(str, h)))
-		return(-1);
+		return (0);
 	return ((f)(str, h, data, ap));
 }
 

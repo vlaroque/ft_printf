@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 21:05:38 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/04 17:54:00 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/19 16:06:34 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		*ft_char_to_func(char *str, int *h)
 
 	i = 0;
 	tab_conv_chars = init_conv_chars();
-	while (i < NB_CONV_CHARS && str[*h] != tab_conv_chars[i].c)
+	while (i < NB_CONV_CHARS && str[*h] && str[*h] != tab_conv_chars[i].c)
 		i++;
 	if (str[*h] == tab_conv_chars[i].c)
 	{

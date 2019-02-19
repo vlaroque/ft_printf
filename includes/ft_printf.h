@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 14:51:15 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/04 17:48:03 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/19 16:53:31 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@ int				put_u(char *str, int *h, t_parsedata data, va_list *ap);
 int				put_o(char *nostr, int *noh, t_parsedata data, va_list *ap);
 int				put_x(char *nostr, int *noh, t_parsedata data, va_list *ap);
 int				put_X(char *nostr, int *noh, t_parsedata data, va_list *ap);
+int				put_p(char *lol, int *h, t_parsedata data, va_list *ap);
+int				put_f(char *nostr, int *noh, t_parsedata data, va_list *ap);
 
 int				ft_printer(char *res_str, char isnbr, t_parsedata data);
 
 # define NB_SPE_CHARS 1
-# define NB_CONV_CHARS 9
+# define NB_CONV_CHARS 11
 #endif

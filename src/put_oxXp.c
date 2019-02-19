@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 15:19:54 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/04 19:07:15 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/19 12:02:00 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,30 @@ int			put_X(char *nostr, int *noh, t_parsedata data, va_list *ap)
 		printedchars += ft_putstrcmpt("0X");
 	printedchars += put_zeros(data, len, prefix);
 	mega_putnbr_base_unsigned(nbr, "0123456789ABCDEF");
+	printedchars += len;
+	printedchars += put_spaces(printedchars, data, len, prefix);
+	return (printedchars);
+}
+
+int			put_p(char *lol, int *h, t_parsedata data, va_list *ap)
+{
+	void		*ptr;
+	int			prefix;
+	int			len;
+	int			printedchars;
+
+	printedchars = 0;
+	data = flag_cleaner(data);
+	ptr = (void *)va_arg(*ap, void *);
+	prefix = 2;
+	if (ptr == NULL && (data.precision == 0 || data.precision == -42))
+		return(zero(data));
+	len = mega_nbrlen_base_unsigned((uintmax_t)ptr, "0123456789abcdef");
+	printedchars += put_spaces(printedchars, data, len, prefix);
+	if (prefix)
+		printedchars += ft_putstrcmpt("0x");
+	printedchars += put_zeros(data, len, prefix);
+	mega_putnbr_base_unsigned((uintmax_t)ptr, "0123456789abcdef");
 	printedchars += len;
 	printedchars += put_spaces(printedchars, data, len, prefix);
 	return (printedchars);
