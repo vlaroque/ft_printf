@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 15:08:43 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/04 19:03:51 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/27 18:15:42 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include	<stdint.h>
 #include	"ft_printf.h"
 #include	"ft_generic_int_fct.h"
-#include	"getint.h"
+#include	"getdata_varg.h"
 
 static char	what_a_sign(intmax_t nbr, t_parsedata data)
 {

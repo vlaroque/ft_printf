@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 13:41:47 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/19 16:40:28 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/27 18:09:52 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include	<stdint.h>
 #include	"ft_printf.h"
 #include	"ft_generic_int_fct.h"
-#include	"getint.h"
+#include	"getdata_varg.h"
 
 int			put_u(char *nostr, int *noh, t_parsedata data, va_list *ap)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getint_varg.c                                      :+:      :+:    :+:   */
+/*   getdata_varg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 14:43:52 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/04 17:54:53 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/27 18:11:04 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,18 @@ intmax_t	getint(t_parsedata data, va_list *ap)
 		res = (intmax_t)va_arg(*ap, intmax_t);
 	else if (data.size == 7)
 		res = (intmax_t)va_arg(*ap, ssize_t);
+	return (res);
+}
+
+static long double		get_float(t_parsedata data, va_list *ap)
+{
+	long double res;
+	
+	if (data.size == 0)
+		res = (long double)va_arg(*ap, double);
+	else if (data.size == 3)
+		res = (long double)va_arg(*ap, double);
+	else if (data.size == 5)
+		res = (long double)va_arg(*ap, long double);
 	return (res);
 }
