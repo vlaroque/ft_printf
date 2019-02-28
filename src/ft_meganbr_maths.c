@@ -6,17 +6,17 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 19:19:15 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/27 18:11:35 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/28 09:51:14 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_meganbr.h"
 
-ullong	*meganbr_multiplybytwo(ullong *meganbr)
+t_ullong	*meganbr_multiplybytwo(t_ullong *meganbr)
 {
 	int		i;
-	ullong	carry;
-	ullong	tmp;
+	t_ullong	carry;
+	t_ullong	tmp;
 
 	i = MEGALEN - 1;
 	carry = 0;
@@ -30,11 +30,11 @@ ullong	*meganbr_multiplybytwo(ullong *meganbr)
 	return (meganbr);
 }
 
-ullong	*meganbr_dividebytwo(ullong *meganbr)
+t_ullong	*meganbr_dividebytwo(t_ullong *meganbr)
 {
 	int		i;
-	ullong	tmp;
-	ullong	carry;
+	t_ullong	tmp;
+	t_ullong	carry;
 
 	i = 0;
 	carry = 0;
@@ -48,11 +48,11 @@ ullong	*meganbr_dividebytwo(ullong *meganbr)
 	return (meganbr);
 }
 
-ullong	*meganbr_two_exp(int exp)
+t_ullong	*meganbr_two_exp(int exp)
 {
-	ullong	*meganbr;
+	t_ullong	*meganbr;
 
-	if (!(meganbr = malloc(sizeof(ullong) * MEGALEN)))
+	if (!(meganbr = malloc(sizeof(t_ullong) * MEGALEN)))
 		return (NULL);
 	meganbr[MEGAUNIT] = 1;
 	if (exp > 0)
@@ -74,7 +74,7 @@ ullong	*meganbr_two_exp(int exp)
 	return (meganbr);
 }
 
-ullong	*meganbr_exp(ullong *meganbr, int exp)
+t_ullong	*meganbr_exp(t_ullong *meganbr, int exp)
 {
 	if (exp > 0)
 	{
@@ -95,11 +95,11 @@ ullong	*meganbr_exp(ullong *meganbr, int exp)
 	return (meganbr);
 }
 
-ullong	*meganbr_add(ullong *meganbr, ullong *added)
+t_ullong	*meganbr_add(t_ullong *meganbr, t_ullong *added)
 {
 	int		i;
-	ullong	carry;
-	ullong	save;
+	t_ullong	carry;
+	t_ullong	save;
 
 	i = MEGALEN - 1;
 	carry = 0;

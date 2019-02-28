@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 15:31:20 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/27 12:22:09 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/28 18:02:43 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ static int			sign_ldbl(long double *nbr)
 
 char				*ft_ldbl_2_str(long double nbr)
 {
-	int		expt;
-	int		sign;
+	int			expt;
+	int			sign;
 	t_ullong	*added;
 	t_ullong	*meganbr;
 

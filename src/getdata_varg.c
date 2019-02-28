@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 14:43:52 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/27 18:11:04 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/02/28 10:04:20 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ intmax_t	getint(t_parsedata data, va_list *ap)
 	return (res);
 }
 
-static long double		get_float(t_parsedata data, va_list *ap)
+long double		get_float(t_parsedata data, va_list *ap)
 {
 	long double res;
 	

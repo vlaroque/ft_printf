@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/07 11:11:17 by vlaroque          #+#    #+#              #
-#    Updated: 2019/02/27 18:15:03 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/02/28 10:30:34 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC = ft_printf.c ft_putchar.c ft_conversions.c \
 		ft_data_init.c ft_isdigit.c ft_parsing.c \
 		ft_strlen.c ft_putstrcmpt.c ft_strdup.c ft_printer.c \
 		put_di.c ft_generic_int_fct.c put_u.c putnbr_base.c put_oxXp.c\
-		getdata_varg.c put_cspc.c
+		getdata_varg.c put_cspc.c ft_meganbr.c ft_meganbr_maths.c\
+		ft_meganbr_processing.c put_f.c
 SRCPATH = ./src/
 OBJ = $(SRC:.c=.o)
 OBJPATH = ./obj/
