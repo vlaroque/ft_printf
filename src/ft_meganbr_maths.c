@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 19:19:15 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/28 09:51:14 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/07 14:06:19 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_ullong	*meganbr_exp(t_ullong *meganbr, int exp)
 
 t_ullong	*meganbr_add(t_ullong *meganbr, t_ullong *added)
 {
-	int		i;
+	int			i;
 	t_ullong	carry;
 	t_ullong	save;
 

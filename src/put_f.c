@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 16:50:45 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/28 20:27:02 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/07 18:54:19 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,11 @@ int		int_len(char *str)
 	i = 0;
 	while(str[i] == '0')
 		i++;
-	if (i < 4950)
-		return (4950 - i);
-	else 
+	if (i == 0)
 		return (1);
+	if (i < 4949)
+		return (4950 - i);
+	return (1);
 }
 
 int		printsign(t_parsedata data, int neg)
@@ -146,7 +147,7 @@ int		print_intpart(int len, char *str, t_parsedata data)
 	return(len);
 }
 
-int		print_precision(t_parsedata data, char* str)
+int		print_precision(t_parsedata data, char *str)
 {
 	int		i;
 	int		printed;
@@ -164,6 +165,61 @@ int		print_precision(t_parsedata data, char* str)
 	return (prelen);
 }
 
+int		ft_ldbl_is_neg(long double nbr)
+{
+	unsigned int *nbrmask;
+
+	nbrmask = (unsigned int *)&nbr;
+	if (nbrmask[2] & 32768)
+		return (1);
+	else
+		return (0);
+}
+
+int		put_f_specials(long double nbr, t_parsedata *data, char *str, int *neg)
+{
+	if (nbr != nbr)
+	{
+		(*data).precision = -42;
+		if ((*data).flags & (1 << 2))
+			(*data).flags = (*data).flags - (1 << 2);
+		str[4949 - 2] = 'n';
+		str[4949 - 1] = 'a';
+		str[4949] = 'n';
+		*neg = 0;
+		return (3);
+	}
+	if (nbr == 1.0 / 0.0 || nbr == -1.0 / 0.0)
+	{
+		(*data).precision = -42;
+		if ((*data).flags & (1 << 2))
+			(*data).flags = (*data).flags - (1 << 2);
+		str[4949 - 2] = 'i';
+		str[4949 - 1] = 'n';
+		str[4949] = 'f';
+		return (3);
+	}
+	return (0);
+}
+int		ft_is_special(long double nbr, t_parsedata *data, char **str, int *neg)
+{
+	int		intlen;
+
+	if (nbr != nbr || nbr == 1.0 / 0.0 || nbr == -1.0 / 0.0)
+	{
+		if (!(*str = malloc(sizeof(t_ullong) * MEGALEN)))
+			return (0);
+		intlen = put_f_specials(nbr, data, *str, neg);
+	}	
+	else
+	{
+		*str = ft_ldbl_2_str(nbr);
+		intlen = int_len(*str);
+		rounding(*data, *str);
+	}
+	return (intlen);
+}
+
 int		put_f(char *nostr, int *noh, t_parsedata data, va_list *ap)
 {
 	long double	nbr;
@@ -175,12 +231,8 @@ int		put_f(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	printed = 0;
 	data = flag_cleaner(data);
 	nbr = get_float(data, ap);
-	neg = 0;
-	if (nbr < +0.0)
-		neg = 1;
-	str = ft_ldbl_2_str(nbr);
-	rounding(data, str);
-	intlen = int_len(str);
+	neg = ft_ldbl_is_neg(nbr);
+	intlen = ft_is_special(nbr, &data, &str, &neg);
 	printed += print_spaces_or_zeros(data, intlen, 1, neg);
 	printed += printsign(data, neg);
 	printed += print_spaces_or_zeros(data, intlen, 0, neg);
@@ -188,5 +240,5 @@ int		put_f(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	printed += print_precision(data, str);
 	printed += print_spaces_or_zeros(data, intlen, 2, neg);
 	free(str);
-	return (0);
+	return (printed);
 }

@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:50:55 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/27 12:22:21 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/07 14:10:21 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,16 @@ char	*meganbr_be_str(t_ullong *meganbr)
 	}
 	strnbr[STRNBRLEN] = '\0';
 	return (strnbr);
+}
+
+void	str_to_zero(char *str)
+{
+	int i;
+
+	i = 0;
+	while (i < LDBL_LEN)
+	{
+		str [i] = 0;
+		i++;
+	}
 }

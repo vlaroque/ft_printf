@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:36:00 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/04 19:03:50 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/07 15:25:57 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ uintmax_t	positive_me(intmax_t nbr)
 int		put_zeros(t_parsedata data, int len, int prefix)
 {
 	int res;
-//	printf ("pre = %d , len = %d\n", data.precision, len);
+
 	res = 0;
 	if (data.precision > len)
 		res = print_char_x_times('0', data.precision - len);
@@ -108,7 +108,7 @@ int		zero(t_parsedata data)
 	printedchars = 0;
 	len = 0;
 	printedchars += put_spaces(printedchars, data, len, 0);
-//	printedchars += put_zeros(data, len, 0);
+	printedchars += put_zeros(data, len, 0);
 	printedchars += put_spaces(printedchars, data, len, 0);
 	return (printedchars);
 }

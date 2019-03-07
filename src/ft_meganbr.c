@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 15:31:20 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/28 18:02:43 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/07 14:06:23 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char				*ft_ldbl_2_str(long double nbr)
 	t_ullong	*added;
 	t_ullong	*meganbr;
 
-	if (!(meganbr = malloc(sizeof(char) * LDBL_LEN)))
+	if (!(meganbr = malloc(sizeof(t_ullong) * MEGALEN)))
 		return (NULL);
 	sign = sign_ldbl(&nbr);
 	expt = get_exp(nbr);

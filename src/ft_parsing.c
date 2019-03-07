@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 21:05:38 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/28 09:47:59 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/07 15:58:56 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_twocharscmp(char *str, char char1, char char2)
 	{
 		if (char2)
 		{
-			if(str[1] == char2)
+			if (str[1] == char2)
 				return (1);
 			return (0);
 		}
@@ -42,7 +42,7 @@ void		*ft_char_to_func(char *str, int *h)
 	if (str[*h] == tab_conv_chars[i].c)
 	{
 		(*h)++;
-		return(tab_conv_chars[i].f);
+		return (tab_conv_chars[i].f);
 	}
 	return (NULL);
 }

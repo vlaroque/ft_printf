@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:16:04 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/27 12:22:39 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/07 13:52:45 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@
 
 typedef	unsigned long long	t_ullong;
 char	*ft_ldbl_2_str(long double nbr);
+void	str_to_zero(char *str);
 
 #endif

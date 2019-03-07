@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 20:04:47 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/24 11:57:21 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/07 15:58:43 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,3 @@ int		ft_conversion(char *str, int *h, va_list *ap)
 		return (0);
 	return ((f)(str, h, data, ap));
 }
-
-//dans le cas present f est la fonction ft_conv_s
