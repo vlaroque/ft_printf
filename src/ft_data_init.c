@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:55:42 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/08 02:53:00 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/08 12:15:37 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,15 @@ static t_conv_chars	*init_conv_chars_filler(t_conv_chars *conv_chars_tab)
 	return (conv_chars_tab);
 }
 
+static t_conv_chars	*init_conv_chars_filler_second(t_conv_chars *conv_chars_tab)
+{
+	conv_chars_tab[11].c = 'b';
+	conv_chars_tab[11].f = put_b;
+	conv_chars_tab[12].c = 'r';
+	conv_chars_tab[12].f = put_r;
+	return (conv_chars_tab);
+}
+
 t_conv_chars		*init_conv_chars(void)
 {
 	static t_conv_chars	*conv_tab = NULL;
@@ -62,6 +71,8 @@ t_conv_chars		*init_conv_chars(void)
 		if (!(conv_tab = (t_conv_chars *)malloc(sizeof(t_conv_chars) * NB_CONV_CHARS)))
 			return (0);
 		conv_tab = init_conv_chars_filler(conv_tab);
+		conv_tab = init_conv_chars_filler_second(conv_tab);
 	}
+	printf("%c\n",conv_tab[12].c);
 	return (conv_tab);
 }
