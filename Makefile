@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/07 11:11:17 by vlaroque          #+#    #+#              #
-#    Updated: 2019/03/07 14:03:38 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/03/08 03:10:30 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ FLAGS=no
 CPPFLAGS = -I ./includes/
 SRC = ft_printf.c ft_putchar.c ft_conversions.c \
 		ft_data_init.c ft_isdigit.c ft_parsing.c \
-		ft_strlen.c ft_putstrcmpt.c ft_strdup.c ft_printer.c \
+		ft_strlen.c ft_putstrcmpt.c ft_strdup.c \
 		put_di.c ft_generic_int_fct.c put_u.c putnbr_base.c put_oxXp.c\
 		getdata_varg.c put_cspc.c ft_meganbr.c ft_meganbr_maths.c\
 		ft_meganbr_processing.c put_f.c
@@ -46,8 +46,7 @@ $(OBJPATH)%.o : $(SRCPATH)%.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 $(NAME) : $(OBJS) $(INCPATH)ft_printf.h
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	ar rcs $(NAME) $(OBJS)
 
 clean :
 	rm -Rf $(OBJS)

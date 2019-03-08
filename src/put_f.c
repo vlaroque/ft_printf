@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 16:50:45 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/07 18:54:19 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/08 02:38:48 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int		round_check(char *str, int i)
 	else if (str[i] - '0' > 5)
 		return (1);
 	return (0);
-
 }
+
 int		pre_len(int precision)
 {
 	int len;

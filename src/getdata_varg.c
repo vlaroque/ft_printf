@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 14:43:52 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/28 10:04:20 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/08 05:58:28 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,9 @@ long double		get_float(t_parsedata data, va_list *ap)
 	else if (data.size == 5)
 		res = (long double)va_arg(*ap, long double);
 	return (res);
+}
+
+int				next_int(va_list *ap)
+{
+	return ((int)va_arg(*ap, int));
 }
