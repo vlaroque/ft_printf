@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_color.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 13:02:14 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/10 00:23:22 by vlaroque         ###   ########.fr       */
+/*   Created: 2019/03/09 21:34:53 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/03/09 22:57:42 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdlib.h>
+#ifndef FT_COLOR_H
+# define FT_COLOR_H
+# include "ft_printf.h"
 
-char	*ft_strdup(const char *s1)
-{
-	int		i;
-	char	*newstr;
+int		ft_colortxt(char *str, int *h, va_list *ap);
 
-	i = 0;
-	if (!s1)
-		return (NULL);
-	if (!(newstr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1))))
-		return (NULL);
-	while (s1[i])
-	{
-		newstr[i] = s1[i];
-		i++;
-	}
-	newstr[i] = 0;
-	return (newstr);
-}
+#endif

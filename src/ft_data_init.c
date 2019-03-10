@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:55:42 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/08 12:15:37 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/09 22:59:53 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_spe_chars			*init_spe_chars(void)
 			return (0);
 		spe_chars_tab[0].c = '%';
 		spe_chars_tab[0].f = ft_conversion;
+		spe_chars_tab[0].c = '{';
+		spe_chars_tab[0].f = ft_colortxt;
 	}
 	return (spe_chars_tab);
 }
