@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:56:27 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/19 16:48:38 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/12 14:22:58 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int			put_s(char *lol, int *h, t_parsedata data, va_list *ap)
 	int		len;
 
 	printedchars = 0;
-	str = (char *)va_arg(*ap, void *);
-	if(str)
-	{	
-		if (data.precision > 0 && data.precision < ft_strlen(str))
+	str = ft_strdup((char *)va_arg(*ap, void *));
+	if (str)
+	{
+		if (data.precision >= 0 && data.precision < ft_strlen(str))
 			str[data.precision] = '\0';
 		len = ft_strlen(str);
 	}
@@ -73,6 +73,7 @@ int			put_s(char *lol, int *h, t_parsedata data, va_list *ap)
 	else
 		printedchars += ft_putstrcmpt("(null)");
 	printedchars += put_spaces_csppc(data, len, printedchars, 1);
+	free(str);
 	return (printedchars);
 }
 

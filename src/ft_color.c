@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 14:52:05 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/09 23:09:54 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/12 11:55:33 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int		ft_chckclr(char *str, char *color, int colorlen, int *h)
 	i = 0;
 	while (str[i] == color[i] && i < colorlen - 1)
 		i++;
-//	printf("\ncolortest %s | %s | %d =? %d\n", str, color, i, colorlen);
 	if (i == colorlen - 1)
 	{
 		*h += colorlen;

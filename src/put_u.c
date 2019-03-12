@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 13:41:47 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/27 18:09:52 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/12 12:46:28 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int			put_u(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	printedchars = 0;
 	data = flag_cleaner(data);
 	nbr = getuint(data, ap);
+	if (nbr == 0 && (data.precision == 0 || data.precision == -42))
+		return(zero(data));
 	len = mega_nbrlen_base_unsigned(nbr, "0123456789");
 	printedchars += put_spaces(printedchars, data, len, 0);
 	printedchars += put_zeros(data, len, 0);

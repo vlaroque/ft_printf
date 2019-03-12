@@ -6,19 +6,19 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:15:22 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/24 21:07:55 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/12 14:18:12 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-int		ft_strlen(const char *c)
+int		ft_strlen(const char *str)
 {
 	int i;
 
 	i = 0;
-	if (!c)
+	if (!str)
 		return (0);
-	while (c[i])
+	while (str[i])
 		i++;
 	return (i);
 }

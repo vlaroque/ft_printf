@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 15:19:54 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/27 18:07:11 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/12 13:07:36 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int			put_o(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	data = flag_cleaner(data);
 	nbr = getuint(data, ap);
 	prefix = 0;
-	if (nbr == 0 && (data.precision == 0 || data.precision == -42))
+	if (nbr == 0 && (data.precision == 0 || data.precision == -42)
+		&& !(data.flags & (1 << 4)))
 		return(zero(data));
 	if ((data.flags & (1 << 4)) && nbr)
 		prefix = 1;
@@ -106,7 +107,11 @@ int			put_p(char *lol, int *h, t_parsedata data, va_list *ap)
 	ptr = (void *)va_arg(*ap, void *);
 	prefix = 2;
 	if (ptr == NULL && (data.precision == 0 || data.precision == -42))
-		return(zero(data));
+	{
+		if (prefix)
+			printedchars += ft_putstrcmpt("0x");
+		return (zero(data) + printedchars);
+	}
 	len = mega_nbrlen_base_unsigned((uintmax_t)ptr, "0123456789abcdef");
 	printedchars += put_spaces(printedchars, data, len, prefix);
 	if (prefix)

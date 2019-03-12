@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:55:42 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/09 22:59:53 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:09:05 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_spe_chars			*init_spe_chars(void)
 			return (0);
 		spe_chars_tab[0].c = '%';
 		spe_chars_tab[0].f = ft_conversion;
-		spe_chars_tab[0].c = '{';
-		spe_chars_tab[0].f = ft_colortxt;
+		spe_chars_tab[1].c = '{';
+		spe_chars_tab[1].f = ft_colortxt;
 	}
 	return (spe_chars_tab);
 }
@@ -55,12 +55,20 @@ static t_conv_chars	*init_conv_chars_filler(t_conv_chars *conv_chars_tab)
 	return (conv_chars_tab);
 }
 
-static t_conv_chars	*init_conv_chars_filler_second(t_conv_chars *conv_chars_tab)
+static t_conv_chars	*init_conv_chars_filler_bonus(t_conv_chars *conv_chars_tab)
 {
 	conv_chars_tab[11].c = 'b';
 	conv_chars_tab[11].f = put_b;
 	conv_chars_tab[12].c = 'r';
 	conv_chars_tab[12].f = put_r;
+	conv_chars_tab[13].c = 'D';
+	conv_chars_tab[13].f = put_D;
+	conv_chars_tab[14].c = 'I';
+	conv_chars_tab[14].f = put_I;
+	conv_chars_tab[15].c = 'O';
+	conv_chars_tab[15].f = put_O;
+	conv_chars_tab[16].c = 'U';
+	conv_chars_tab[16].f = put_U;
 	return (conv_chars_tab);
 }
 
@@ -73,8 +81,8 @@ t_conv_chars		*init_conv_chars(void)
 		if (!(conv_tab = (t_conv_chars *)malloc(sizeof(t_conv_chars) * NB_CONV_CHARS)))
 			return (0);
 		conv_tab = init_conv_chars_filler(conv_tab);
-		conv_tab = init_conv_chars_filler_second(conv_tab);
+		conv_tab = init_conv_chars_filler_bonus(conv_tab);
 	}
-	printf("%c\n",conv_tab[12].c);
+
 	return (conv_tab);
 }

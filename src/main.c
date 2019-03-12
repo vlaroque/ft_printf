@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 17:35:13 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/10 00:31:12 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/12 22:14:14 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,10 @@ int		main(int ac, char **av)
 /*	printf("|%*.*Le|\n", w, p, res);
 	printf("|%*.*Lg|\n", w, p, res);
 */	//ft_printf("|%#*.*b|\n", w, p, res);
-	printf("%d\n", ft_printf("{blue}FR{eoc}AN{red}CE{eoc}\n", str));
+
+/*	printf(">%d\n", printf("%4.s", "42"));
+	printf(">%d\n", ft_printf("%4.s", "42"));*/
+
+	//ft_printf("%-5% ", 42);
+	printf("%3$s %1$s %2$s", "lol", "lul", "lal");
 }
