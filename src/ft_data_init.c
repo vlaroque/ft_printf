@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:55:42 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/12 17:09:05 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/13 01:25:04 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ static t_conv_chars	*init_conv_chars_filler_bonus(t_conv_chars *conv_chars_tab)
 	conv_chars_tab[15].f = put_O;
 	conv_chars_tab[16].c = 'U';
 	conv_chars_tab[16].f = put_U;
+	conv_chars_tab[17].c = 'F';
+	conv_chars_tab[17].f = put_F;
 	return (conv_chars_tab);
 }
 

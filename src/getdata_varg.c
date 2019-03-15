@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 14:43:52 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/12 13:12:47 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/13 02:29:19 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ intmax_t	getint(t_parsedata data, va_list *ap)
 	else if (data.size == 6)
 		res = (intmax_t)va_arg(*ap, intmax_t);
 	else if (data.size == 7)
-		res = (intmax_t)va_arg(*ap, ssize_t);
+		res = (intmax_t)va_arg(*ap, size_t);
 	return (res);
 }
 

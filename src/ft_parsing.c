@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 21:05:38 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/12 18:27:29 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:44:57 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ char	ft_flagparser(char *str, int *h)
 			flags = (flags | (1 << 3));
 		else if(str[*h] == '#')
 			flags = (flags | (1 << 4));
+		else if(str[*h] == '\'')
+			flags = (flags | (1 << 5));
 		else
 			break;
 		(*h)++;

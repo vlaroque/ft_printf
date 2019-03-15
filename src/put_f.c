@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 16:50:45 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/08 02:38:48 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/15 12:46:46 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		rounding(t_parsedata data, char *str)
 		tmp = (str[i] + carry - '0');
 		str[i] = tmp % 10 + '0';
 		carry = tmp / 10;
-		i++;
+		i--;
 	}
 	return (1);
 }
@@ -229,6 +229,8 @@ int		put_f(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	int			intlen;
 
 	printed = 0;
+	if (data.precision == -1)
+		data.precision = 6;
 	data = flag_cleaner(data);
 	nbr = get_float(data, ap);
 	neg = ft_ldbl_is_neg(nbr);

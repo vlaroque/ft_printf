@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 07:26:26 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/12 16:48:23 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:16:19 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			put_b(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	if (prefix)
 		printedchars += ft_putstrcmpt("0b");
 	printedchars += put_zeros(data, len, prefix);
-	mega_putnbr_base_unsigned(nbr, "01");
+	mega_putnbr_base_unsigned(nbr, "01", 0, 0);
 	printedchars += len;
 	printedchars += put_spaces(printedchars, data, len, prefix);
 	return (printedchars);

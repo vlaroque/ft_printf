@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 12:19:52 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/12 12:25:25 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/13 01:35:56 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ int		put_U(char *nostr, int *noh, t_parsedata data, va_list *ap)
 {
 	data.size = 3;
 	return (put_u(nostr, noh, data, ap));
+}
+
+int		put_F(char *nostr, int *noh, t_parsedata data, va_list *ap)
+{
+	data.size = 6;
+	return (put_f(nostr, noh, data, ap));
 }

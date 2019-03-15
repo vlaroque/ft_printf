@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 14:51:15 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/12 18:36:20 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/15 20:13:41 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 #include "ft_color.h"
 
 # define NB_SPE_CHARS 2
-# define NB_CONV_CHARS 17
+# define NB_CONV_CHARS 18
 int				ft_printf(char *str, ...);
 int				ft_conversion(char *str, int *h, va_list *ap);
+int				put_unbr(uintmax_t nbr, int quote);
 
 // from libft
 void			ft_putchar(char c);
@@ -74,6 +75,7 @@ int				put_D(char *nostr, int *noh, t_parsedata data, va_list *ap);
 int				put_I(char *nostr, int *noh, t_parsedata data, va_list *ap);
 int				put_O(char *nostr, int *noh, t_parsedata data, va_list *ap);
 int				put_U(char *nostr, int *noh, t_parsedata data, va_list *ap);
+int				put_F(char *nostr, int *noh, t_parsedata data, va_list *ap);
 
 int				ft_printer(char *res_str, char isnbr, t_parsedata data);
 
