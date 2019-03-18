@@ -6,13 +6,14 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:56:27 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/15 19:15:58 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/18 16:43:14 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
-#include	"ft_generic_int_fct.h"
 #include	<unistd.h>
+#include	"ft_printf.h"
+#include	"ft_writings.h"
+#include	"ft_generic_int_fct.h"
 
 static int	put_spaces_csppc(t_parsedata data, int len,int printedchars, char end)
 {
@@ -23,7 +24,7 @@ static int	put_spaces_csppc(t_parsedata data, int len,int printedchars, char end
 	{
 		while (data.width > len + printedchars + res)
 		{
-			ft_putchar(' ');
+			ft_putchar_fd(' ', data.fd);
 			res++;
 		}
 	}
@@ -31,14 +32,14 @@ static int	put_spaces_csppc(t_parsedata data, int len,int printedchars, char end
 	{
 		while (data.width > printedchars + res)
 		{
-			ft_putchar(' ');
+			ft_putchar_fd(' ', data.fd);
 			res++;
 		}
 	}
 	return (res);
 }
 
-int			put_pc(char *lol, int *h, t_parsedata data, va_list *ap)
+int			put_pc(t_parsedata data, va_list *ap)
 {
 	int		printedchars;
 	int		len;
@@ -46,19 +47,18 @@ int			put_pc(char *lol, int *h, t_parsedata data, va_list *ap)
 	printedchars = 0;
 	len = 1;
 	printedchars += put_spaces_csppc(data, len, printedchars, 0);
-	printedchars += ft_putstrcmpt("%");
+	printedchars += ft_putstr_fd("%", data.fd);
 	printedchars += put_spaces_csppc(data, len, printedchars, 1);
 	return (printedchars);
 }
 
-int			put_s(char *lol, int *h, t_parsedata data, va_list *ap)
+int			put_s(t_parsedata data, va_list *ap)
 {
 	char	*str;
 	int		printedchars;
 	int		len;
 
 	printedchars = 0;
-	// a proteger!
 	str = ft_strdup((char *)va_arg(*ap, void *));
 	if (data.precision == -42)
 		data.precision = 0;
@@ -72,15 +72,16 @@ int			put_s(char *lol, int *h, t_parsedata data, va_list *ap)
 		len = 6;
 	printedchars += put_spaces_csppc(data, len, printedchars, 0);
 	if (str)
-		printedchars += ft_putstrcmpt(str);
+		printedchars += ft_putstr_fd(str, data.fd);
 	else
-		printedchars += ft_putstrcmpt("(null)");
+		printedchars += ft_putstr_fd("(null)", data.fd);
 	printedchars += put_spaces_csppc(data, len, printedchars, 1);
-	free(str);
+	if (str)
+		free(str);
 	return (printedchars);
 }
 
-int			put_c(char *lol, int *h, t_parsedata data, va_list *ap)
+int			put_c(t_parsedata data, va_list *ap)
 {
 	char	c;
 	char	str[2];
@@ -97,12 +98,12 @@ int			put_c(char *lol, int *h, t_parsedata data, va_list *ap)
 		len = 1;
 	printedchars += put_spaces_csppc(data, len, printedchars, 0);
 	if (c)
-		printedchars += ft_putstrcmpt(str);
+		printedchars += ft_putstr_fd(str, data.fd);
 	else
 	{
 		printedchars += 1;
-		ft_putchar('\0');
+		ft_putchar_fd('\0', data.fd);
 	}
 	printedchars += put_spaces_csppc(data, len, printedchars, 1);
-	return (printedchars);
+return (printedchars);
 }

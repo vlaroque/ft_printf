@@ -6,13 +6,13 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 17:51:07 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/01/17 17:35:51 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/18 17:36:26 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_putcchar(char c)
 {
 	write(1, &c, 1);
 }

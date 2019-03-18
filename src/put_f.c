@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 16:50:45 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/15 12:46:46 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:41:34 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ft_generic_int_fct.h"
 #include "ft_meganbr.h"
 #include "getdata_varg.h"
+#include "ft_writings.h"
 
 int		round_check(char *str, int i)
 {
@@ -23,10 +24,8 @@ int		round_check(char *str, int i)
 	else if (str[i] - '0' == 5)
 	{
 		i++;
-		while(str[i] == '0' && i < 21499)
-		{
+		while (str[i] == '0' && i < 21499)
 			i++;
-		}
 		if (str[i] - '0' != 0)
 			return (1);
 	}
@@ -42,7 +41,7 @@ int		pre_len(int precision)
 	len = 0;
 	if (precision == -42 || precision == 0)
 		len = 0;
-	else if(precision == -1)
+	else if (precision == -1)
 		len = 7;
 	else
 		len = precision + 1;
@@ -54,7 +53,7 @@ int		rounding(t_parsedata data, char *str)
 	int i;
 	int carry;
 	int tmp;
-	
+
 	carry = 1;
 	i = -1;
 	if (pre_len(data.precision) == 0 && round_check(str, 4949))
@@ -71,32 +70,35 @@ int		rounding(t_parsedata data, char *str)
 	return (1);
 }
 
-
 int		print_spaces_or_zeros(t_parsedata data, int intlen, int state, int neg)
 {
 	int i;
 	int prelen;
 
+	if (data.flags & (1 << 5))
+		intlen = intlen + (intlen / 3);
 	prelen = pre_len(data.precision);
-	i = 0;
-	if (state == 0 && data.width > intlen + prelen + neg && data.flags & (1 << 2))
+	i = -1;
+	if (state == 0 && data.width > intlen + prelen + neg && (data.flags & (1 << 2)))
 	{
-		while(i++ < data.width - (intlen + prelen + neg))
-			ft_putchar('0');
+		while (++i < data.width - (intlen + prelen + neg))
+			ft_putchar_fd('0', data.fd);
 	}
 	else if (state == 2 && data.width > intlen + prelen + neg
 		&& !(data.flags & (1 << 2)) && data.flags & 1)
 	{
-		while(i++ < data.width - (intlen + prelen + neg))
-			ft_putchar(' ');
+		while (++i < data.width - (intlen + prelen + neg))
+			ft_putchar_fd(' ', data.fd);
 	}
 	else if (state == 1 && data.width > intlen + prelen + neg
 		&& !(data.flags & (1 << 2)) && !(data.flags & 1))
 	{
-		while(i++ < data.width - (intlen + prelen + neg))
-			ft_putchar(' ');
+		while (++i < data.width - (intlen + prelen + neg))
+			ft_putchar_fd(' ', data.fd);
 	}
-		return (i);
+	else
+		return (0);
+	return (i);
 }
 
 int		int_len(char *str)
@@ -104,7 +106,7 @@ int		int_len(char *str)
 	int i;
 
 	i = 0;
-	while(str[i] == '0')
+	while (str[i] == '0')
 		i++;
 	if (i == 0)
 		return (1);
@@ -117,17 +119,17 @@ int		printsign(t_parsedata data, int neg)
 {
 	if (neg == 1)
 	{
-		ft_putchar('-');
+		ft_putchar_fd('-', data.fd);
 		return (1);
 	}
 	else if (data.flags & (1 << 1))
 	{
-		ft_putchar('+');
+		ft_putchar_fd('+', data.fd);
 		return (1);
 	}
 	else if (data.flags & (1 << 3))
 	{
-		ft_putchar(' ');
+		ft_putchar_fd(' ', data.fd);
 		return (1);
 	}
 	return (0);
@@ -140,11 +142,16 @@ int		print_intpart(int len, char *str, t_parsedata data)
 	i = 4950 - len;
 	while (i < 4949)
 	{
-		ft_putchar(str[i]);
+		ft_putchar_fd(str[i], data.fd);
+		if (((4949 - i) % 3) == 0 && (data.flags & (1 << 5)))
+		{
+			ft_putchar_fd(',', data.fd);
+			len++;
+		}
 		i++;
 	}
-		ft_putchar(str[i]);
-	return(len);
+	ft_putchar_fd(str[i], data.fd);
+	return (len);
 }
 
 int		print_precision(t_parsedata data, char *str)
@@ -158,9 +165,9 @@ int		print_precision(t_parsedata data, char *str)
 	prelen = pre_len(data.precision);
 	if (prelen)
 	{
-		ft_putchar('.');
-		while(i++ < prelen - 1)
-			ft_putchar(str[i + 4949]);
+		ft_putchar_fd('.', data.fd);
+		while (i++ < prelen - 1)
+			ft_putchar_fd(str[i + 4949], data.fd);
 	}
 	return (prelen);
 }
@@ -201,6 +208,7 @@ int		put_f_specials(long double nbr, t_parsedata *data, char *str, int *neg)
 	}
 	return (0);
 }
+
 int		ft_is_special(long double nbr, t_parsedata *data, char **str, int *neg)
 {
 	int		intlen;
@@ -210,7 +218,7 @@ int		ft_is_special(long double nbr, t_parsedata *data, char **str, int *neg)
 		if (!(*str = malloc(sizeof(t_ullong) * MEGALEN)))
 			return (0);
 		intlen = put_f_specials(nbr, data, *str, neg);
-	}	
+	}
 	else
 	{
 		*str = ft_ldbl_2_str(nbr);
@@ -220,7 +228,7 @@ int		ft_is_special(long double nbr, t_parsedata *data, char **str, int *neg)
 	return (intlen);
 }
 
-int		put_f(char *nostr, int *noh, t_parsedata data, va_list *ap)
+int		put_f(t_parsedata data, va_list *ap)
 {
 	long double	nbr;
 	int			neg;
@@ -229,9 +237,9 @@ int		put_f(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	int			intlen;
 
 	printed = 0;
+	data = flag_cleaner(data);
 	if (data.precision == -1)
 		data.precision = 6;
-	data = flag_cleaner(data);
 	nbr = get_float(data, ap);
 	neg = ft_ldbl_is_neg(nbr);
 	intlen = ft_is_special(nbr, &data, &str, &neg);

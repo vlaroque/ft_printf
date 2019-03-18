@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 20:04:47 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/15 19:51:13 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:22:53 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static int	bonus_star(t_parsedata *data, va_list *ap, int *h, int width)
 {
 	int		nbr;
-	
+
 	(*h)++;
 	nbr = next_int(ap);
 	if (width && nbr < 0)
@@ -38,7 +38,7 @@ int			get_index(char *str, int *h)
 	if (str[*h] == '$' && index >= 0)
 	{
 		(*h)++;
-		return(index);
+		return (index);
 	}
 	else if (str[*h] == '$')
 	{
@@ -49,12 +49,13 @@ int			get_index(char *str, int *h)
 	return (-1);
 }
 
-int			ft_conversion(char *str, int *h, va_list *ap)
+int			ft_conversion(char *str, int *h, va_list *ap, int fd)
 {
 	t_parsedata		data;
-	int				(*f)(char *str, int *h, t_parsedata data, va_list *ap);
+	int				(*f)(t_parsedata data, va_list *ap);
 
 	(*h)++;
+	data.fd = fd;
 	data.flags = ft_flagparser(str, h);
 	data.index = get_index(str, h);
 	data.width = mini_atoi(str, h);
@@ -72,5 +73,5 @@ int			ft_conversion(char *str, int *h, va_list *ap)
 	data.size = ft_typeparser(str, h);
 	if (!(f = ft_char_to_func(str, h)))
 		return (0);
-	return ((f)(str, h, data, ap));
+	return ((f)(data, ap));
 }

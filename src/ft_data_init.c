@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:55:42 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/13 01:25:04 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:24:07 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,15 @@ static t_conv_chars	*init_conv_chars_filler_bonus(t_conv_chars *conv_chars_tab)
 
 t_conv_chars		*init_conv_chars(void)
 {
-	static t_conv_chars	*conv_tab = NULL;
+	static t_conv_chars	*tab = NULL;
 
-	if (!(conv_tab))
+	if (!(tab))
 	{
-		if (!(conv_tab = (t_conv_chars *)malloc(sizeof(t_conv_chars) * NB_CONV_CHARS)))
+		if (!(tab = (t_conv_chars *)malloc(sizeof(t_conv_chars) * NB_CONV_CHARS)))
 			return (0);
-		conv_tab = init_conv_chars_filler(conv_tab);
-		conv_tab = init_conv_chars_filler_bonus(conv_tab);
+		tab = init_conv_chars_filler(tab);
+		tab = init_conv_chars_filler_bonus(tab);
 	}
 
-	return (conv_tab);
+	return (tab);
 }

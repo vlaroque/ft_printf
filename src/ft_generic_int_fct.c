@@ -6,14 +6,15 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:36:00 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/07 15:25:57 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/18 16:09:51 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	<stdint.h>
 #include	"ft_printf.h"
+#include	"ft_writings.h"
 
-int		print_char_x_times(char c, int times)
+int		print_char_x_times(char c, int times, int fd)
 {
 	int res;
 
@@ -21,7 +22,7 @@ int		print_char_x_times(char c, int times)
 	if (times < 0)
 		return (0);
 	while(times--)
-		ft_putchar(c);
+		ft_putchar_fd(c, fd);
 	return (res);
 }
 
@@ -61,9 +62,9 @@ int		put_zeros(t_parsedata data, int len, int prefix)
 
 	res = 0;
 	if (data.precision > len)
-		res = print_char_x_times('0', data.precision - len);
+		res = print_char_x_times('0', data.precision - len, data.fd);
 	else if ((data.flags & (1 << 2)) && !(data.flags & 1) && data.precision == -1)
-		res = print_char_x_times('0', data.width - (prefix + len));
+		res = print_char_x_times('0', data.width - (prefix + len), data.fd);
 	return (res);
 }
 
@@ -76,16 +77,16 @@ int		put_spaces(int printedchars, t_parsedata data, int len, int prefix)
 				&& !(data.flags & (1 << 2)))
 	{
 		if (data.precision > len)
-			res = print_char_x_times(' ', data.width - (data.precision + prefix));
+			res = print_char_x_times(' ', data.width - (data.precision + prefix), data.fd);
 		else
-			res = print_char_x_times(' ', data.width - (len + prefix));
+			res = print_char_x_times(' ', data.width - (len + prefix), data.fd);
 	}
 	else if (printedchars != 0 && data.width > (len + prefix) && (data.flags & 1))
 	{
 		if (data.precision > len)
-			res = print_char_x_times(' ', data.width - (data.precision + prefix));
+			res = print_char_x_times(' ', data.width - (data.precision + prefix), data.fd);
 		else
-			res = print_char_x_times(' ', data.width - (len + prefix));
+			res = print_char_x_times(' ', data.width - (len + prefix), data.fd);
 	}
 	return (res);
 }

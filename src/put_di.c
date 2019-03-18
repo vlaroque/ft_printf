@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 15:08:43 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/15 19:28:25 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:08:13 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include	"ft_printf.h"
 #include	"ft_generic_int_fct.h"
 #include	"getdata_varg.h"
+#include	"ft_writings.h"
 
 static char	what_a_sign(intmax_t nbr, t_parsedata data)
 {
@@ -34,7 +35,7 @@ static int	is_prefix(char c)
 	return (1);
 }
 
-int			put_di(char *nostr, int *noh, t_parsedata data, va_list *ap)
+int			put_di(t_parsedata data, va_list *ap)
 {
 	intmax_t	nbr;
 	uintmax_t	posinbr;
@@ -49,13 +50,12 @@ int			put_di(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	posinbr = positive_me(nbr);
 	if (posinbr == 0 && (data.precision == 0 || data.precision == -42))
 		return(zero(data));
-	len = mega_nbrlen_base_unsigned(posinbr, "0123456789");
+	len = unbr_len(posinbr, (data.flags & (1 << 5)));
 	printedchars += put_spaces(printedchars, data, len, is_prefix(sign));
 	if (sign && (printedchars++ || 1))
-		ft_putchar(sign);
+		ft_putchar_fd(sign, data.fd);
 	printedchars += put_zeros(data, len, is_prefix(sign));
-	mega_putnbr_base_unsigned(posinbr, "0123456789");
-	printedchars += len;
+	printedchars += put_unbr(posinbr, (data.flags & (1 << 5)), data.fd);
 	printedchars += put_spaces(printedchars, data, len, is_prefix(sign));
 	return (printedchars);
 }

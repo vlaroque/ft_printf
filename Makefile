@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/07 11:11:17 by vlaroque          #+#    #+#              #
-#    Updated: 2019/03/12 12:24:41 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/03/18 18:34:04 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,11 @@ FLAGS=no
 CPPFLAGS = -I ./includes/
 SRC = ft_printf.c ft_putchar.c ft_conversions.c \
 		ft_data_init.c ft_isdigit.c ft_parsing.c \
-		ft_strlen.c ft_putstrcmpt.c ft_strdup.c \
-		put_di.c ft_generic_int_fct.c put_u.c putnbr_base.c put_oxXp.c\
+		ft_putstrcmpt.c ft_strdup.c \
+		put_di.c ft_generic_int_fct.c put_u.c putnbr_base.c put_oxxp.c\
 		getdata_varg.c put_cspc.c ft_meganbr.c ft_meganbr_maths.c\
-		ft_meganbr_processing.c put_f.c put_bonus.c ft_color.c put_DIOU.c
+		ft_meganbr_processing.c put_f.c put_bonus.c ft_color.c put_DIOU.c\
+		ft_writings.c
 SRCPATH = ./src/
 OBJ = $(SRC:.c=.o)
 OBJPATH = ./obj/

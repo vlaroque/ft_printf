@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:42:45 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/15 19:25:01 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/18 17:40:18 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 int			print_char_x_times(char c, int times);
 int			mega_nbrlen_base_unsigned(uintmax_t nbr, char *base);
-void		mega_putnbr_base(intmax_t nbr, char *base);
-void		mega_putnbr_base_unsigned(uintmax_t nbr, char *base);
+void		mega_putnbr_base(intmax_t nbr, char *base, int fd);
+void		mega_putnbr_base_unsigned(uintmax_t nbr, char *base, int fd);
 int			put_zeros(t_parsedata data, int len, int prefix);
 int			put_spaces(int printedchars, t_parsedata data, int len, int prefix);
 uintmax_t	positive_me(intmax_t nbr);
 t_parsedata	flag_cleaner(t_parsedata data);
 int			zero(t_parsedata data);
+int			put_unbr(uintmax_t nbr, int quote, int fd);
+int			unbr_len(uintmax_t nbr, int quote);
 
 #endif

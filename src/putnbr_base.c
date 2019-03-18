@@ -6,14 +6,15 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 14:43:08 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/15 20:34:30 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:29:33 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<stdint.h>
-#include	"ft_printf.h"
+#include <stdint.h>
+#include "ft_printf.h"
+#include "ft_writings.h"
 
-void	mega_putnbr_base(intmax_t nbr, char *base)
+void		mega_putnbr_base(intmax_t nbr, char *base, int fd)
 {
 	int		basesize;
 
@@ -21,33 +22,33 @@ void	mega_putnbr_base(intmax_t nbr, char *base)
 	if (nbr < 0)
 	{
 		if (nbr <= -basesize)
-			mega_putnbr_base(-(nbr / basesize), base);
-		ft_putchar(base[-(nbr % basesize)]);
+			mega_putnbr_base(-(nbr / basesize), base, fd);
+		ft_putchar_fd(base[-(nbr % basesize)], fd);
 	}
 	else if (nbr >= basesize)
 	{
-		mega_putnbr_base(nbr / basesize, base);
-		ft_putchar(base[nbr % basesize]);
+		mega_putnbr_base(nbr / basesize, base, fd);
+		ft_putchar_fd(base[nbr % basesize], fd);
 	}
 	else
-		ft_putchar(base[nbr % basesize]);
+		ft_putchar_fd(base[nbr % basesize], fd);
 }
 
-void	mega_putnbr_base_unsigned(uintmax_t nbr, char *base)
+void		mega_putnbr_base_unsigned(uintmax_t nbr, char *base, int fd)
 {
 	int		basesize;
 
 	basesize = ft_strlen(base);
 	if (nbr >= basesize)
 	{
-		mega_putnbr_base_unsigned(nbr / basesize, base);
-		ft_putchar(base[nbr % basesize]);
+		mega_putnbr_base_unsigned(nbr / basesize, base, fd);
+		ft_putchar_fd(base[nbr % basesize], fd);
 	}
 	else
-		ft_putchar(base[nbr % basesize]);
+		ft_putchar_fd(base[nbr % basesize], fd);
 }
 
-uintmax_t		ft_pow(uintmax_t nbr, uintmax_t pwr)
+uintmax_t	ft_pow(uintmax_t nbr, uintmax_t pwr)
 {
 	uintmax_t res;
 
@@ -60,26 +61,45 @@ uintmax_t		ft_pow(uintmax_t nbr, uintmax_t pwr)
 	return (res);
 }
 
-int		put_unbr(uintmax_t nbr, int quote)
+int			put_unbr(uintmax_t nbr, int quote, int fd)
 {
-	int len;
-	int i;
-	uintmax_t denom;
-	uintmax_t save;
+	int			len;
+	int			i;
+	uintmax_t	denom;
+	uintmax_t	save;
 
 	save = nbr;
 	len = 0;
+	if (nbr == 0)
+		return (ft_putchar_fd('0', fd));
 	while (nbr && ++len)
 		nbr /= 10;
 	i = len;
 	denom = ft_pow(10, len - 1);
-	while(denom)
+	while (denom)
 	{
-		putchar(((save / denom) % 10) + '0');
+		ft_putchar_fd(((save / denom) % 10) + '0', fd);
 		if (quote && i % 3 == 1 && denom > 10 && ++len)
-			putchar (',');
+			ft_putchar_fd(',', fd);
 		denom /= 10;
 		i--;
 	}
+	return (len);
+}
+
+int			unbr_len(uintmax_t nbr, int quote)
+{
+	int	len;
+
+	len = 0;
+	if (nbr == 0)
+		return (1);
+	while (nbr)
+	{
+		len++;
+		nbr /= 10;
+	}
+	if (quote)
+		return (len + (len / 3));
 	return (len);
 }

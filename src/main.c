@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 17:35:13 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/15 20:35:49 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/18 16:27:37 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ int		main(int ac, char **av)
 */	//ft_printf("|%#*.*b|\n", w, p, res);
 
 
-	uintmax_t a = 12345678901234567890;
+	long double a = 1234567890.1234;
 	//printf(">%d\n", printf("{%f}{%F}", 1.42, 1.42));
 	//printf(">%d\n", ft_printf("{%Lf}\n", 1.42L));
-	printf("  >%d\n", ft_printf("%d", 123456));
-	printf("    putnbr = |%d|", put_unbr(a, 1));
+	printf("  >%d\n", ft_printf("%c\n", 'a'));
+//	printf("  >%d\n", printf("{%*.3d}", 0, 0));
+	//printf("  >%d\n", ft_printf("|%d|pppp\n", 12345679));
 
 }

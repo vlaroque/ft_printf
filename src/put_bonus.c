@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 07:26:26 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/15 19:16:19 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:05:30 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include	"ft_generic_int_fct.h"
 #include	"getdata_varg.h"
 
-int			put_b(char *nostr, int *noh, t_parsedata data, va_list *ap)
+int			put_b(t_parsedata data, va_list *ap)
 {
 	uintmax_t	nbr;
 	int			prefix;
@@ -37,43 +37,43 @@ int			put_b(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	if (prefix)
 		printedchars += ft_putstrcmpt("0b");
 	printedchars += put_zeros(data, len, prefix);
-	mega_putnbr_base_unsigned(nbr, "01", 0, 0);
+	mega_putnbr_base_unsigned(nbr, "01", data.fd);
 	printedchars += len;
 	printedchars += put_spaces(printedchars, data, len, prefix);
 	return (printedchars);
 }
 
-static int	print_non_printing(char c)
+static int	print_non_printing(char c, int fd)
 {
 	if (c == '\0')
-		return (write(1, "^@", 2));
+		return (write(fd, "^@", 2));
 	else if (c == (char)9)
-		return (write(1, "\t", 1));
+		return (write(fd, "\t", 1));
 	else if (c == (char)10)
-		return (write(1, "$\n", 2));
+		return (write(fd, "$\n", 2));
 	else if (c >= (char)1 && c <= (char)26)
 	{
-		write(1, "^", 1);
+		write(fd, "^", 1);
 		c = c + 'A' - 1;
-		write(1, &c, 1);
+		write(fd, &c, 1);
 		return (2);
 	}
 	else if (c == (char)27)
-		return (write(1, "^[", 2));
+		return (write(fd, "^[", 2));
 	else if (c == (char)28)
-		return (write(1, "^\\", 2));
+		return (write(fd, "^\\", 2));
 	else if (c == (char)29)
-		return (write(1, "^]", 2));
+		return (write(fd, "^]", 2));
 	else if (c == (char)30)
-		return (write(1, "^^", 2));
+		return (write(fd, "^^", 2));
 	else if (c == (char)31)
-		return (write(1, "^_", 2));
+		return (write(fd, "^_", 2));
 	else if (c == (char)127)
-		return (write(1, "^?", 2));
+		return (write(fd, "^?", 2));
 	return (0);
 }
 
-int			put_r(char *nostr, int *noh, t_parsedata data, va_list *ap)
+int			put_r(t_parsedata data, va_list *ap)
 {
 	int i;
 	int printed;
@@ -84,9 +84,9 @@ int			put_r(char *nostr, int *noh, t_parsedata data, va_list *ap)
 	while (str[i])
 	{
 		if (str[i] <= 31 || str[i] == 127)
-			printed += print_non_printing(str[i]);
+			printed += print_non_printing(str[i], data.fd);
 		else
-			printed += write(1, str + i, 1);
+			printed += write(data.fd, str + i, 1);
 		i++;
 	}
 	return (printed);
