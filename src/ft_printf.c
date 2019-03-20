@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 14:46:58 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/18 15:48:51 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/20 17:57:12 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int		char_analyser(char *str, int *h, va_list *ap, int fd)
 {
-	int i;
-	t_spe_chars *tab_spe_chars;
+	int				i;
+	t_spe_chars		*tab_spe_chars;
 
 	tab_spe_chars = init_spe_chars();
 	i = 0;
@@ -42,10 +42,10 @@ int		ft_printf(char *str, ...)
 	h = 0;
 	char_count = 0;
 	va_start(ap, str);
-	while(str[h])
+	while (str[h])
 		char_count += char_analyser(str, &h, &ap, 1);
 	va_end(ap);
-	return(char_count);
+	return (char_count);
 }
 
 int		ft_fprintf(int fd, char *str, ...)
@@ -57,8 +57,8 @@ int		ft_fprintf(int fd, char *str, ...)
 	h = 0;
 	char_count = 0;
 	va_start(ap, str);
-	while(str[h])
+	while (str[h])
 		char_count += char_analyser(str, &h, &ap, fd);
 	va_end(ap);
-	return(char_count);
+	return (char_count);
 }

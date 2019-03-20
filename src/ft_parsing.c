@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 21:05:38 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/18 11:22:46 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/20 16:12:11 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int		ft_twocharscmp(char *str, char char1, char char2)
 	return (0);
 }
 
-void		*ft_char_to_func(char *str, int *h)
+void	*ft_char_to_func(char *str, int *h)
 {
-	int i;
+	int				i;
 	t_conv_chars	*tab_conv_chars;
 
 	i = 0;
@@ -67,16 +67,14 @@ char	ft_typeparser(char *str, int *h)
 	else if (ft_twocharscmp(str + (*h), 'z', '\0'))
 		res = 7;
 	else
-		return(0);
+		return (0);
 	if (res == 1 || res == 4)
 		(*h) += 2;
 	else
 		(*h)++;
-	return(res);
-	
+	return (res);
 }
 
-// mini atoi a proteger contre int max !
 int		mini_atoi(char *str, int *h)
 {
 	int	res;
@@ -85,10 +83,10 @@ int		mini_atoi(char *str, int *h)
 	if (!ft_isdigit(str[*h]))
 		return (-1);
 	while (ft_isdigit(str[*h]))
-		{
-			res = res * 10 + (str[*h] - '0');
-			(*h)++;
-		}
+	{
+		res = res * 10 + (str[*h] - '0');
+		(*h)++;
+	}
 	return (res);
 }
 
@@ -101,20 +99,20 @@ char	ft_flagparser(char *str, int *h)
 	{
 		if (str[*h] == '\0')
 			return (-1);
-		else if(str[*h] == '-')
+		else if (str[*h] == '-')
 			flags = (flags | 1);
-		else if(str[*h] == '+')
+		else if (str[*h] == '+')
 			flags = (flags | (1 << 1));
-		else if(str[*h] == '0')
+		else if (str[*h] == '0')
 			flags = (flags | (1 << 2));
-		else if(str[*h] == ' ')
+		else if (str[*h] == ' ')
 			flags = (flags | (1 << 3));
-		else if(str[*h] == '#')
+		else if (str[*h] == '#')
 			flags = (flags | (1 << 4));
-		else if(str[*h] == '\'')
+		else if (str[*h] == '\'')
 			flags = (flags | (1 << 5));
 		else
-			break;
+			break ;
 		(*h)++;
 	}
 	return (flags);

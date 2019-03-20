@@ -6,16 +6,16 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 15:08:43 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/18 18:08:13 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/20 16:23:50 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<stdlib.h>
-#include	<stdint.h>
-#include	"ft_printf.h"
-#include	"ft_generic_int_fct.h"
-#include	"getdata_varg.h"
-#include	"ft_writings.h"
+#include <stdlib.h>
+#include <stdint.h>
+#include "ft_printf.h"
+#include "ft_generic_int_fct.h"
+#include "getdata_varg.h"
+#include "ft_writings.h"
 
 static char	what_a_sign(intmax_t nbr, t_parsedata data)
 {
@@ -49,7 +49,7 @@ int			put_di(t_parsedata data, va_list *ap)
 	sign = what_a_sign(nbr, data);
 	posinbr = positive_me(nbr);
 	if (posinbr == 0 && (data.precision == 0 || data.precision == -42))
-		return(zero(data));
+		return (zero(data));
 	len = unbr_len(posinbr, (data.flags & (1 << 5)));
 	printedchars += put_spaces(printedchars, data, len, is_prefix(sign));
 	if (sign && (printedchars++ || 1))

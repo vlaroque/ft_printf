@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:50:55 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/07 14:10:21 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/20 16:44:40 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	str_to_zero(char *str)
 	i = 0;
 	while (i < LDBL_LEN)
 	{
-		str [i] = 0;
+		str[i] = 0;
 		i++;
 	}
 }

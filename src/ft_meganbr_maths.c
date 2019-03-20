@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 19:19:15 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/07 14:06:19 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/20 17:42:06 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_ullong	*meganbr_multiplybytwo(t_ullong *meganbr)
 {
-	int		i;
+	int			i;
 	t_ullong	carry;
 	t_ullong	tmp;
 
@@ -32,7 +32,7 @@ t_ullong	*meganbr_multiplybytwo(t_ullong *meganbr)
 
 t_ullong	*meganbr_dividebytwo(t_ullong *meganbr)
 {
-	int		i;
+	int			i;
 	t_ullong	tmp;
 	t_ullong	carry;
 

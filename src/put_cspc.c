@@ -6,31 +6,31 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:56:27 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/18 16:43:14 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/20 16:06:36 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<unistd.h>
-#include	"ft_printf.h"
-#include	"ft_writings.h"
-#include	"ft_generic_int_fct.h"
+#include <unistd.h>
+#include "ft_printf.h"
+#include "ft_writings.h"
+#include "ft_generic_int_fct.h"
 
-static int	put_spaces_csppc(t_parsedata data, int len,int printedchars, char end)
+static int	put_spaces_csppc(t_parsedata data, int len, int printed, char end)
 {
 	int	res;
 
 	res = 0;
-	if(data.width > len + printedchars && !(data.flags & 1))
+	if (data.width > len + printed && !(data.flags & 1))
 	{
-		while (data.width > len + printedchars + res)
+		while (data.width > len + printed + res)
 		{
 			ft_putchar_fd(' ', data.fd);
 			res++;
 		}
 	}
-	else if(data.width > len + printedchars && (data.flags & 1) && end)
+	else if (data.width > len + printed && (data.flags & 1) && end)
 	{
-		while (data.width > printedchars + res)
+		while (data.width > printed + res)
 		{
 			ft_putchar_fd(' ', data.fd);
 			res++;
@@ -90,12 +90,12 @@ int			put_c(t_parsedata data, va_list *ap)
 
 	printedchars = 0;
 	c = (char)va_arg(*ap, int);
-	if(c)
+	if (c)
 	{
 		str[0] = c;
 		str[1] = '\0';
 	}
-		len = 1;
+	len = 1;
 	printedchars += put_spaces_csppc(data, len, printedchars, 0);
 	if (c)
 		printedchars += ft_putstr_fd(str, data.fd);
@@ -105,5 +105,5 @@ int			put_c(t_parsedata data, va_list *ap)
 		ft_putchar_fd('\0', data.fd);
 	}
 	printedchars += put_spaces_csppc(data, len, printedchars, 1);
-return (printedchars);
+	return (printedchars);
 }

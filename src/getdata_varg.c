@@ -6,17 +6,17 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 14:43:52 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/13 02:29:19 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/20 17:56:08 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
-#include	<stdint.h>
+#include "ft_printf.h"
+#include <stdint.h>
 
 uintmax_t	getuint(t_parsedata data, va_list *ap)
 {
 	uintmax_t res;
-	
+
 	if (data.size == 0)
 		res = (uintmax_t)(unsigned int)va_arg(*ap, int);
 	else if (data.size == 1)
@@ -55,10 +55,10 @@ intmax_t	getint(t_parsedata data, va_list *ap)
 	return (res);
 }
 
-long double		get_float(t_parsedata data, va_list *ap)
+long double	get_float(t_parsedata data, va_list *ap)
 {
 	long double res;
-	
+
 	if (data.size == 0)
 		res = (long double)va_arg(*ap, double);
 	else if (data.size == 3)
@@ -68,7 +68,7 @@ long double		get_float(t_parsedata data, va_list *ap)
 	return (res);
 }
 
-int				next_int(va_list *ap)
+int			next_int(va_list *ap)
 {
 	return ((int)va_arg(*ap, int));
 }

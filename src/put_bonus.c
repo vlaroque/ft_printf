@@ -6,16 +6,17 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 07:26:26 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/18 18:05:30 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/20 17:55:00 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<unistd.h>
-#include	<stdlib.h>
-#include	<stdint.h>
-#include	"ft_printf.h"
-#include	"ft_generic_int_fct.h"
-#include	"getdata_varg.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include "ft_printf.h"
+#include "ft_generic_int_fct.h"
+#include "getdata_varg.h"
+#include "ft_writings.h"
 
 int			put_b(t_parsedata data, va_list *ap)
 {
@@ -29,13 +30,13 @@ int			put_b(t_parsedata data, va_list *ap)
 	nbr = getuint(data, ap);
 	prefix = 0;
 	if (nbr == 0 && (data.precision == 0 || data.precision == -42))
-		return(zero(data));
+		return (zero(data));
 	if ((data.flags & (1 << 4)) && nbr)
 		prefix = 2;
 	len = mega_nbrlen_base_unsigned(nbr, "01");
 	printedchars += put_spaces(printedchars, data, len, prefix);
 	if (prefix)
-		printedchars += ft_putstrcmpt("0b");
+		printedchars += ft_putstr_fd("0b", data.fd);
 	printedchars += put_zeros(data, len, prefix);
 	mega_putnbr_base_unsigned(nbr, "01", data.fd);
 	printedchars += len;
@@ -54,8 +55,7 @@ static int	print_non_printing(char c, int fd)
 	else if (c >= (char)1 && c <= (char)26)
 	{
 		write(fd, "^", 1);
-		c = c + 'A' - 1;
-		write(fd, &c, 1);
+		ft_putchar_fd(c + 'A' - 1, fd);
 		return (2);
 	}
 	else if (c == (char)27)
@@ -75,9 +75,9 @@ static int	print_non_printing(char c, int fd)
 
 int			put_r(t_parsedata data, va_list *ap)
 {
-	int i;
-	int printed;
-	char *str;
+	int		i;
+	int		printed;
+	char	*str;
 
 	i = 0;
 	str = (char *)va_arg(*ap, void *);
