@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstrcmpt.c                                    :+:      :+:    :+:   */
+/*   ft_generic_conv_fct.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/21 17:59:09 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/12 18:47:52 by vlaroque         ###   ########.fr       */
+/*   Created: 2019/03/21 14:38:38 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/03/21 14:39:39 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "ft_printf.h"
+#ifndef FT_GENERIC_CONV_FCT_H
+# define FT_GENERIC_CONV_FCT_H
 
-int		ft_putstrcmpt(char *str)
-{
-	int		len;
+t_parsedata	flag_cleaner(t_parsedata data);
+int			print_char_x_times(char c, int times, int fd);
 
-	if (str == NULL)
-		return (0);
-	len = ft_strlen(str);
-	write(1, str, len);
-	return (len);
-}
+#endif

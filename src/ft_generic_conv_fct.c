@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_DIOU.c                                         :+:      :+:    :+:   */
+/*   ft_generic_conv_fct.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/12 12:19:52 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/18 15:59:13 by vlaroque         ###   ########.fr       */
+/*   Created: 2019/03/21 14:28:31 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/03/21 14:42:36 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "ft_writings.h"
 
-int		put_D(t_parsedata data, va_list *ap)
+t_parsedata	flag_cleaner(t_parsedata data)
 {
-	data.size = 3;
-	return (put_di(data, ap));
+	if ((data.flags & (1 << 2)) && (data.flags & 1))
+		data.flags -= (1 << 2);
+	if (data.flags & (1 << 2) && (data.precision >= 0 || data.precision == -42))
+		data.flags -= (1 << 2);
+	return (data);
 }
 
-int		put_I(t_parsedata data, va_list *ap)
+int			print_char_x_times(char c, int times, int fd)
 {
-	data.size = 3;
-	return (put_di(data, ap));
-}
+	int res;
 
-int		put_O(t_parsedata data, va_list *ap)
-{
-	data.size = 3;
-	return (put_o(data, ap));
-}
-
-int		put_U(t_parsedata data, va_list *ap)
-{
-	data.size = 3;
-	return (put_u(data, ap));
-}
-
-int		put_F(t_parsedata data, va_list *ap)
-{
-	data.size = 6;
-	return (put_f(data, ap));
+	res = times;
+	if (times < 0)
+		return (0);
+	while (times--)
+		ft_putchar_fd(c, fd);
+	return (res);
 }

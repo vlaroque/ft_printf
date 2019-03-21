@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:16:04 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/07 13:52:45 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/21 16:11:43 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_MEGANBR_H
 
 # include <stdlib.h>
-# define LDBL_LEN 21500
 # define MEGALEN 1189
 # define MEGAUNIT 274
 # define STRNBRLEN 21380

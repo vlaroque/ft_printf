@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 16:50:45 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/20 16:01:49 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/21 18:20:56 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,24 @@ int		put_f_specials(long double nbr, t_parsedata *data, char *str, int *neg)
 	return (0);
 }
 
-int		ft_is_special(long double nbr, t_parsedata *data, char **str, int *neg)
+char	*ft_is_special(long double nbr, t_parsedata *data, int *intlen, int *neg)
 {
-	int		intlen;
+	char	*str;
 
+	*intlen = 0;
 	if (nbr != nbr || nbr == 1.0 / 0.0 || nbr == -1.0 / 0.0)
 	{
-		if (!(*str = malloc(sizeof(t_ullong) * MEGALEN)))
-			return (0);
-		intlen = put_f_specials(nbr, data, *str, neg);
+		if (!(str = malloc(sizeof(char) * (STRNBRLEN + 1))))
+			return (NULL);
+		*intlen = put_f_specials(nbr, data, str, neg);
 	}
 	else
 	{
-		*str = ft_ldbl_2_str(nbr);
-		intlen = int_len(*str);
-		rounding(*data, *str);
+		str = ft_ldbl_2_str(nbr);
+		*intlen = int_len(str);
+		rounding(*data, str);
 	}
-	return (intlen);
+	return (str);
 }
 
 int		put_f(t_parsedata data, va_list *ap)
@@ -87,7 +88,8 @@ int		put_f(t_parsedata data, va_list *ap)
 		data.precision = 6;
 	nbr = get_float(data, ap);
 	neg = ft_ldbl_is_neg(nbr);
-	intlen = ft_is_special(nbr, &data, &str, &neg);
+	if (!(str = ft_is_special(nbr, &data, &intlen, &neg)))
+		return (0);
 	printed += print_spaces_or_zeros(data, intlen, 1, neg);
 	printed += printsign(data, neg);
 	printed += print_spaces_or_zeros(data, intlen, 0, neg);

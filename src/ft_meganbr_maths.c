@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 19:19:15 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/20 17:42:06 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/21 17:14:34 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_ullong	*meganbr_dividebytwo(t_ullong *meganbr)
 
 	i = 0;
 	carry = 0;
-	while (i <= MEGALEN)
+	while (i < MEGALEN)
 	{
 		tmp = meganbr[i] + (carry * 1000000000000000000);
 		meganbr[i] = tmp / 2;

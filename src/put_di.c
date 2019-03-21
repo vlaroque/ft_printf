@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 15:08:43 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/20 16:23:50 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/21 11:27:28 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ static char	what_a_sign(intmax_t nbr, t_parsedata data)
 
 static int	is_prefix(char c)
 {
-	if (c == '\0')
-		return (0);
-	return (1);
+	return (c == '\0') ? 0 : 1;
 }
 
 int			put_di(t_parsedata data, va_list *ap)

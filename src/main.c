@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 17:35:13 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/20 17:54:25 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/21 16:59:38 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,10 @@ int		ft_printf(char *str, ...);
 
 int		main(int ac, char **av)
 {
-	int i;
-	char	str[2];
+	long double f;
 
-	str[1] = '\0';
-	i = 0;
-	while (i < 128)
-	{
-		str[0] = i;
-		ft_printf("%r\n", str);
-		i++;
-	}
+	f = 2.123456789;
+	ft_printf("%.7Lf\n\n", f);
+	printf("%.7Lf\n", f);
 	return (0);
 }

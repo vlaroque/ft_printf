@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_oxXp.c                                         :+:      :+:    :+:   */
+/*   put_oxxp.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 15:19:54 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/18 18:33:52 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/19 08:49:23 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			put_x(t_parsedata data, va_list *ap)
 	return (printedchars);
 }
 
-int			put_X(t_parsedata data, va_list *ap)
+int			put_m_x(t_parsedata data, va_list *ap)
 {
 	uintmax_t	nbr;
 	int			prefix;

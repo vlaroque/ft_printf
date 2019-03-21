@@ -6,43 +6,42 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:26:43 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/20 15:53:51 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/21 16:54:02 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "put_f.h"
 #include "ft_writings.h"
+#include "ft_meganbr.h"
 
 int		print_spaces_or_zeros(t_parsedata data, int intlen, int state, int neg)
 {
 	int i;
-	int prelen;
+	int len;
 
 	if (data.flags & (1 << 5))
 		intlen = intlen + (intlen / 3);
-	prelen = pre_len(data.precision);
+	len = pre_len(data.precision) + intlen + neg;
 	i = -1;
-	if (state == 0 && data.width > intlen + prelen + neg && (data.flags & (1 << 2)))
+	if (state == 0 && data.width > len && (data.flags & (1 << 2)))
 	{
-		while (++i < data.width - (intlen + prelen + neg))
+		while (++i < data.width - (len))
 			ft_putchar_fd('0', data.fd);
 	}
-	else if (state == 2 && data.width > intlen + prelen + neg
+	else if (state == 2 && data.width > len
 		&& !(data.flags & (1 << 2)) && data.flags & 1)
 	{
-		while (++i < data.width - (intlen + prelen + neg))
+		while (++i < data.width - (len))
 			ft_putchar_fd(' ', data.fd);
 	}
-	else if (state == 1 && data.width > intlen + prelen + neg
+	else if (state == 1 && data.width > len
 		&& !(data.flags & (1 << 2)) && !(data.flags & 1))
 	{
-		while (++i < data.width - (intlen + prelen + neg))
+		while (++i < data.width - (len))
 			ft_putchar_fd(' ', data.fd);
 	}
-	else
-		return (0);
-	return (i);
+	return ((i == -1) ? 0 : i);
 }
 
 int		printsign(t_parsedata data, int neg)
@@ -96,8 +95,13 @@ int		print_precision(t_parsedata data, char *str)
 	if (prelen)
 	{
 		ft_putchar_fd('.', data.fd);
+		while (i < prelen - 1 && i + 4950 < STRNBRLEN)
+		{
+			ft_putchar_fd(str[i + 4950], data.fd);
+			i++;
+		}
 		while (i++ < prelen - 1)
-			ft_putchar_fd(str[i + 4949], data.fd);
+			ft_putchar_fd('0', data.fd);
 	}
 	return (prelen);
 }

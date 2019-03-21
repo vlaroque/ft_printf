@@ -29,3 +29,17 @@ faux printf:
 |               12345|%
 ft_printf git:(master) ✗
 ```
+
+
+put_f
+	ft_is_special
+		ft_ldbl_2_str
+			meganbr_be_str
+				ullong_to_str	|	32
+		int_len					|	37 37
+		rounding				|	81
+			round_check			|||	41 51 59
+	print_precision
+		ft_putchar_fd
+			write				||	
+		
