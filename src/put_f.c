@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 16:50:45 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/21 18:20:56 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/23 20:02:56 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		put_f_specials(long double nbr, t_parsedata *data, char *str, int *neg)
 	return (0);
 }
 
-char	*ft_is_special(long double nbr, t_parsedata *data, int *intlen, int *neg)
+char	*ft_is_specl(long double nbr, t_parsedata *data, int *intlen, int *neg)
 {
 	char	*str;
 
@@ -83,19 +83,20 @@ int		put_f(t_parsedata data, va_list *ap)
 	int			intlen;
 
 	printed = 0;
-	data = flag_cleaner(data);
+	if ((data.flags & (1 << 2)) && (data.flags & 1))
+		data.flags -= (1 << 2);
 	if (data.precision == -1)
 		data.precision = 6;
 	nbr = get_float(data, ap);
 	neg = ft_ldbl_is_neg(nbr);
-	if (!(str = ft_is_special(nbr, &data, &intlen, &neg)))
+	if (!(str = ft_is_specl(nbr, &data, &intlen, &neg)))
 		return (0);
-	printed += print_spaces_or_zeros(data, intlen, 1, neg);
+	printed += put_spaces_or_zeros(data, intlen, 1, (neg || data.flags & 10));
 	printed += printsign(data, neg);
-	printed += print_spaces_or_zeros(data, intlen, 0, neg);
+	printed += put_spaces_or_zeros(data, intlen, 0, (neg || data.flags & 10));
 	printed += print_intpart(intlen, str, data);
 	printed += print_precision(data, str);
-	printed += print_spaces_or_zeros(data, intlen, 2, neg);
+	printed += put_spaces_or_zeros(data, intlen, 2, (neg || data.flags & 10));
 	free(str);
 	return (printed);
 }

@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 15:31:20 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/21 18:24:21 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/23 17:36:47 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,10 @@ static int			sign_ldbl(long double *nbr)
 	return (sign);
 }
 
-char				*ft_ldbl_2_str(long double nbr)
+static int			ft_ldbl_mantissa(long double nbr, t_ullong *meganbr)
 {
-	int			expt;
-	int			sign;
 	t_ullong	*added;
-	t_ullong	*meganbr;
 
-	if (!(meganbr = malloc(sizeof(t_ullong) * MEGALEN)))
-		return (NULL);
-	sign = sign_ldbl(&nbr);
-	expt = get_exp(nbr);
-	nbr /= two_exp(expt);
 	added = meganbr_two_exp(1);
 	while (nbr > 0.0)
 	{
@@ -95,6 +87,25 @@ char				*ft_ldbl_2_str(long double nbr)
 		nbr *= 2.0;
 	}
 	free(added);
+	return (0);
+}
+
+char				*ft_ldbl_2_str(long double nbr)
+{
+	int			expt;
+	int			sign;
+	t_ullong	*meganbr;
+	char		*resstr;
+
+	if (!(meganbr = (t_ullong *)malloc(sizeof(t_ullong) * MEGALEN)))
+		return (NULL);
+	meganbr_zero(meganbr);
+	sign = sign_ldbl(&nbr);
+	expt = get_exp(nbr);
+	nbr /= two_exp(expt);
+	ft_ldbl_mantissa(nbr, meganbr);
 	meganbr = meganbr_exp(meganbr, expt);
-	return (meganbr_be_str(meganbr));
+	resstr = meganbr_be_str(meganbr);
+	free(meganbr);
+	return (resstr);
 }

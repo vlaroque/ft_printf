@@ -6,33 +6,13 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 14:43:08 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/18 18:29:33 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/23 14:32:51 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
 #include "ft_printf.h"
 #include "ft_writings.h"
-
-void		mega_putnbr_base(intmax_t nbr, char *base, int fd)
-{
-	int		basesize;
-
-	basesize = ft_strlen(base);
-	if (nbr < 0)
-	{
-		if (nbr <= -basesize)
-			mega_putnbr_base(-(nbr / basesize), base, fd);
-		ft_putchar_fd(base[-(nbr % basesize)], fd);
-	}
-	else if (nbr >= basesize)
-	{
-		mega_putnbr_base(nbr / basesize, base, fd);
-		ft_putchar_fd(base[nbr % basesize], fd);
-	}
-	else
-		ft_putchar_fd(base[nbr % basesize], fd);
-}
 
 void		mega_putnbr_base_unsigned(uintmax_t nbr, char *base, int fd)
 {

@@ -6,11 +6,12 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 19:19:15 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/21 17:14:34 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/23 16:17:52 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_meganbr.h"
+#include "ft_meganbr_processing.h"
 
 t_ullong	*meganbr_multiplybytwo(t_ullong *meganbr)
 {
@@ -54,6 +55,7 @@ t_ullong	*meganbr_two_exp(int exp)
 
 	if (!(meganbr = malloc(sizeof(t_ullong) * MEGALEN)))
 		return (NULL);
+	meganbr_zero(meganbr);
 	meganbr[MEGAUNIT] = 1;
 	if (exp > 0)
 	{

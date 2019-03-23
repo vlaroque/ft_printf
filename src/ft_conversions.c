@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 20:04:47 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/18 18:22:53 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/23 20:06:40 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ static int	bonus_star(t_parsedata *data, va_list *ap, int *h, int width)
 
 	(*h)++;
 	nbr = next_int(ap);
-	if (width && nbr < 0)
+	if (nbr < 0)
 	{
-		data->flags = (data->flags | 1);
+		if (width)
+			data->flags = (data->flags | 1);
 		nbr = -nbr;
 	}
 	return (nbr);

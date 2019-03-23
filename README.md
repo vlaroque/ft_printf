@@ -42,4 +42,5 @@ put_f
 	print_precision
 		ft_putchar_fd
 			write				||	
-		
+
+Vive le `valgrind --track-origins=yes ./a.out`!!!

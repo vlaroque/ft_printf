@@ -6,14 +6,14 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:50:55 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/21 18:47:20 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/23 17:37:28 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_meganbr.h"
 #include <stdio.h>
 
-int		uuuullong_to_str(char *str, t_ullong nbr)
+int		uullong_to_str(char *str, t_ullong nbr)
 {
 	str = str + 17;
 	while (nbr > 0)
@@ -29,13 +29,9 @@ int		ullong_to_str(char *str, int start, t_ullong nbr)
 {
 	int i;
 
-
-
 	i = 17 + start;
-	printf(">>i = %d nbr = %lld\n", i, nbr);
 	while (nbr > (t_ullong)0 && i >= 0)
 	{
-		printf("	>>i = %d\n", i);
 		str[i] = (nbr % 10) + '0';
 		nbr = nbr / 10;
 		i--;
@@ -69,9 +65,22 @@ void	str_to_zero(char *str)
 	int i;
 
 	i = 0;
-	while (i < STRNBRLEN)
+	while (i <= STRNBRLEN)
 	{
 		str[i] = 0;
 		i++;
 	}
+}
+
+int		meganbr_zero(t_ullong *meganbr)
+{
+	int i;
+
+	i = 0;
+	while (i < MEGALEN)
+	{
+		meganbr[i] = 0;
+		i++;
+	}
+	return (0);
 }

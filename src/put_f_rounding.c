@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:34:41 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/21 17:48:49 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/23 17:39:07 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,16 @@ int		rounding(t_parsedata data, char *str)
 	int carry;
 	int tmp;
 
-	carry = 1;
-	if (pre_len(data.precision) == 0)
+	carry = 0;
+	if (pre_len(data.precision) == 0 && round_check(str, 4949))
 	{
-		round_check(str, 4949);
 		i = 4949;
+		carry = 1;
 	}
-	else if (data.precision > 0)
+	else if (data.precision > 0 && round_check(str, 4949 + data.precision))
 	{
-		round_check(str, 4949 + data.precision);
 		i = 4949 + data.precision;
+		carry = 1;
 	}
 	while (carry)
 	{

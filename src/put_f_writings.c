@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:26:43 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/03/21 16:54:02 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/23 19:57:32 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ft_writings.h"
 #include "ft_meganbr.h"
 
-int		print_spaces_or_zeros(t_parsedata data, int intlen, int state, int neg)
+int		put_spaces_or_zeros(t_parsedata data, int intlen, int state, int neg)
 {
 	int i;
 	int len;

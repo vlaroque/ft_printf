@@ -6,13 +6,14 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 12:03:21 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/02/28 09:50:31 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/03/23 11:40:32 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MEGANBR_PROCESSING_H
 # define FT_MEGANBR_PROCESSING_H
 
-char	*meganbr_be_str(t_ullong *meganbr);
+char				*meganbr_be_str(t_ullong *meganbr);
+int					meganbr_zero(t_ullong *meganbr);
 
 #endif
